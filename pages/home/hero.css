@@ -1,7 +1,7 @@
 /* Hero Section */
 
 .heroContainer {
-  background-image: url("/images/lines.webp");
+  background-image: url("/images/lines.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 85vh;
@@ -59,7 +59,7 @@ h1::after {
 @media screen and (max-width: 850px) {
   .heroContainer {
     background-position: top right;
-    background-image: url("/images/lines-mobile.webp");
+    background-image: url("/images/lines-mobile.jpeg");
   }
 
   .heroContainer .heroTitle {
