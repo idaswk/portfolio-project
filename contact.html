@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ida Watson - Contact</title>
+    <meta
+      name="description"
+      content="Ida Watson is a freelance artist and designer based in Switzerland, offering artistic services and collaborations."
+    />
+    <meta
+      name="keywords"
+      content="freelance artist, artist, freelance designer, designer, schwyz, switzerland"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="https://use.typekit.net/jbp6irs.css"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="reset/reset.css" />
+    <link rel="stylesheet" href="variables/variables.css" />
+    <link rel="stylesheet" href="partials/navigation.css" />
+    <link rel="stylesheet" href="partials/title.css" />
+    <link rel="stylesheet" href="pages/contact/contact.css" />
+    <link rel="stylesheet" href="partials/footer.css" />
+    <script src="javascript/nav.js" defer></script>
+  </head>
+  <body>
+    <header class="generalNavigation">
+      <!-- Desktop Navigation -->
+      <nav class="desktopNavigation">
+        <ul>
+          <li class="logo">
+            <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+          </li>
+          <li class="home"><a href="index.html">home</a></li>
+          <li class="desktopTrigger">
+            <a href="portfolio.html">portfolio</a
+            ><i class="fa-solid fa-chevron-down"></i>
+            <ul class="dropdown">
+              <li><a href="pencil.html">pencil & ink</a></li>
+              <li><a href="#">digital</a></li>
+              <li><a href="#">photography</a></li>
+            </ul>
+          </li>
+          <li class="about"><a href="#">about</a></li>
+          <li class="contact"><a href="contact.html">contact</a></li>
+        </ul>
+      </nav>
+      <!-- Mobile Navigation -->
+      <nav class="mobileNavigation">
+        <a href="index.html" class="logo">
+          <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+        </a>
+        <button class="mobileTrigger">☰</button>
+        <div class="links">
+          <a href="index.html">home</a>
+          <a href="portfolio.html">portfolio</a>
+          <a href="#">about</a>
+          <a href="contact.html">contact</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1 class="title">contact</h1>
+      <section class="contactContainer">
+        <!-- General Information -->
+        <article class="info">
+          <div class="info--1">
+            <p>Do you have a general inquiry?</p>
+            <a href="#">Get in touch here.</a>
+          </div>
+          <div class="info--2">
+            <p>
+              For project inquiries or commission requests, please complete the
+              contact form provided.
+            </p>
+          </div>
+          <div class="info--3">
+            <span>Note:</span>
+            <p>Please allow up to 72 hours for a reply.</p>
+          </div>
+        </article>
+        <!-- Submission Form -->
+        <article class="form">
+          <form action="#">
+            <h2>Personal Details</h2>
+            <div class="inputPersonal">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="First Name" />
+              <label for="surname">Surname</label>
+              <input type="text" id="surname" placeholder="Surname" />
+            </div>
+            <div class="inputPersonal">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Email" />
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="Phone Number" />
+            </div>
+            <h2>Project Details</h2>
+            <label for="project">Which service are you interested in?</label>
+            <select type="select" id="project">
+              <option value="collab">Project Collaboration</option>
+              <option value="commission">Commission Request</option>
+            </select>
+            <label for="message">Tell me about your project...</label>
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+              placeholder="Tell me about your project..."
+            ></textarea>
+            <input type="submit" value="Submit" />
+          </form>
+        </article>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="mainFooter">
+      <ul class="socialLinks">
+        <li>
+          <a href="mailto:idawatson@hotmail.com">
+            <img src="icons/message.svg" alt="Message" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/idaswk/?hl=en" target="_blank">
+            <img src="icons/instagram.svg" alt="Instagram" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.behance.net/idakofoed" target="_blank">
+            <img src="icons/behance.svg" alt="LinkedIn" />
+          </a>
+        </li>
+      </ul>
+      <ul class="legalLinks">
+        <li class="policy">
+          <a href="#">Privacy Policy</a>
+        </li>
+        <li class="notice">
+          <a href="#">Legal Notice</a>
+        </li>
+        <li class="copyright">
+          <small>&copy; Ida Watson 2022 - All rights reserved.</small>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>

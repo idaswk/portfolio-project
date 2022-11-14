@@ -1,0 +1,23 @@
+.galleryContainer {
+  display: grid;
+  /* grid-template-columns: 100px 1fr 1fr; */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  padding: 2rem 2rem 2rem 3rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+  @media screen and (max-width: 800px) {
+    .galleryContainer {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }

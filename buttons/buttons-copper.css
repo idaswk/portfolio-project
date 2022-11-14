@@ -1,0 +1,41 @@
+/* Buttons */
+
+.buttonContainer,
+.buttonContainer .button {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.buttonContainer {
+  padding-top: 2rem;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  overflow: hidden;
+}
+
+.buttonContainer .button:link,
+.buttonContainer .button:visited {
+  border: solid 2px var(--copper);
+  border-radius: 1.5rem;
+  font-family: var(--body);
+  letter-spacing: var(--space);
+  text-transform: lowercase;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem;
+  text-decoration: none;
+  color: var(--copper);
+  min-width: 120px;
+}
+
+.buttonContainer .button:hover,
+.buttonContainer .button:active {
+  background: var(--copper);
+  color: var(--white);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}

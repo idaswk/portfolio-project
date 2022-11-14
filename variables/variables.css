@@ -1,0 +1,19 @@
+:root {
+  /* Colours */
+  --copper: #aa5236;
+  --beige: #d1bcad;
+  --lightbrown: #bb8c6a;
+  --green: #596c46;
+  --black: #000000;
+  --white: #ffffff;
+  --lightgrey: #f0f0f0;
+  --mediumgrey: #9d9898;
+  --darkgrey: #707070;
+  --darkestgrey: #292929;
+
+  /* Typography */
+  --nav: "Aptly", sans-serif;
+  --body: "Neue-Haas-Grotesk-Text", sans-serif;
+  --header: "Neue-Haas-Grotesk-Display", sans-serif;
+  --space: 1px;
+}

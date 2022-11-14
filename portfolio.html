@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ida Watson - Portfolio</title>
+    <meta
+      name="description"
+      content="Ida Watson is a freelance artist and designer based in Switzerland, offering artistic services and collaborations."
+    />
+    <meta
+      name="keywords"
+      content="freelance artist, artist, freelance designer, designer, schwyz, switzerland"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="https://use.typekit.net/jbp6irs.css"
+    />
+    <link
+      rel="stylesheet"
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="reset/reset.css" />
+    <link rel="stylesheet" href="variables/variables.css" />
+    <link rel="stylesheet" href="partials/navigation.css" />
+    <link rel="stylesheet" href="partials/title.css" />
+    <link rel="stylesheet" href="pages/portfolio/portfolio.css" />
+    <link rel="stylesheet" href="buttons/buttons-green.css" />
+    <link rel="stylesheet" href="partials/footer.css" />
+    <script src="javascript/nav.js" defer></script>
+  </head>
+  <body>
+    <header class="generalNavigation">
+      <!-- Desktop Navigation -->
+      <nav class="desktopNavigation">
+        <ul>
+          <li class="logo">
+            <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+          </li>
+          <li class="home"><a href="index.html">home</a></li>
+          <li class="desktopTrigger">
+            <a href="portfolio.html">portfolio</a>
+            <i class="fa-solid fa-chevron-down"></i>
+            <ul class="dropdown">
+              <li><a href="pencil.html">pencil & ink</a></li>
+              <li><a href="#">digital</a></li>
+              <li><a href="#">photography</a></li>
+            </ul>
+          </li>
+          <li class="about"><a href="#">about</a></li>
+          <li class="contact"><a href="contact.html">contact</a></li>
+        </ul>
+      </nav>
+      <!-- Mobile Navigation -->
+      <nav class="mobileNavigation">
+        <a href="index.html" class="logo">
+          <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+        </a>
+        <button class="mobileTrigger">☰</button>
+        <div class="links">
+          <a href="index.html">home</a>
+          <a href="portfolio.html">portfolio</a>
+          <a href="#">about</a>
+          <a href="contact.html">contact</a>
+        </div>
+      </nav>
+    </header>
+    <div class="limit">
+      <main>
+        <h1 class="title">portfolio</h1>
+        <section class="portfolioContainer">
+          <!-- Pencil Container -->
+          <article class="subpage">
+            <div class="imgContainer">
+              <img
+                src="images/pencil.jpeg"
+                alt="A half pomegranate drawn with pencil."
+              />
+            </div>
+            <div class="buttonContainer">
+              <a href="pencil.html" class="button">Pencil & Ink</a>
+            </div>
+          </article>
+          <!-- Digital Container -->
+          <article class="subpage">
+            <div class="imgContainer">
+              <img
+                src="images/digital.jpeg"
+                alt="A quince drawn on a tablet. The tablet is standing on a desk."
+              />
+            </div>
+            <div class="buttonContainer">
+              <a href="#" class="button">Digital</a>
+            </div>
+          </article>
+          <!-- Photography Container -->
+          <article class="subpage">
+            <div class="imgContainer">
+              <img
+                src="images/photography.jpeg"
+                alt="A picture of leaves on a smartphone. The smartphone is standing on a desk."
+              />
+            </div>
+            <div class="buttonContainer">
+              <a href="#" class="button">Photography</a>
+            </div>
+          </article>
+        </section>
+      </main>
+      <!-- Footer -->
+      <footer class="mainFooter">
+        <ul class="socialLinks">
+          <li>
+            <a href="mailto:idawatson@hotmail.com">
+              <img src="icons/message.svg" alt="Message" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/idaswk/?hl=en">
+              <img src="icons/instagram.svg" alt="Instagram" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.behance.net/idakofoed">
+              <img src="icons/behance.svg" alt="LinkedIn" />
+            </a>
+          </li>
+        </ul>
+        <ul class="legalLinks">
+          <li class="policy">
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li class="notice">
+            <a href="#">Legal Notice</a>
+          </li>
+          <li class="copyright">
+            <small>&copy; Ida Watson 2022 - All rights reserved.</small>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>
