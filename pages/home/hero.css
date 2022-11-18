@@ -18,15 +18,15 @@
 
 .heroContainer .heroTitle {
   width: 50%;
-  padding-top: 8rem;
+  margin-top: 8rem;
 }
 
 .heroContainer .heroTitle h1 {
-  font-family: var(--nav);
+  font-family: var(--body);
   font-size: 2rem;
   color: var(--copper);
-  text-transform: lowercase;
-  font-weight: 500;
+  text-transform: uppercase;
+  font-weight: 600;
   letter-spacing: var(--space);
 
   position: relative;
@@ -59,11 +59,13 @@ h1::after {
 @media screen and (max-width: 850px) {
   .heroContainer {
     background-position: top right;
-    background-image: url("bg-images/lines-mobile.webp");
+    background-image: url("bg-images/lines-mobile.jpg");
   }
 
   .heroContainer .heroTitle {
     width: 75%;
+    background-color: rgba(255, 255, 255, 0.738);
+    padding: 2rem 1rem;
   }
 
   .heroContainer .heroTitle h1 {
