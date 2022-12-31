@@ -41,65 +41,93 @@
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="reset/reset.css" />
-    <link rel="stylesheet" href="variables/variables.css" />
-    <link rel="stylesheet" href="partials/navigation.css" />
-    <link rel="stylesheet" href="pages/home/hero.css" />
-    <link rel="stylesheet" href="buttons/buttons-copper.css" />
-    <link rel="stylesheet" href="pages/home/info.css" />
-    <link rel="stylesheet" href="partials/footer.css" />
+    <link rel="stylesheet" href="css/reset/reset.css" />
+    <link rel="stylesheet" href="css/variables/variables.css" />
+    <link rel="stylesheet" href="css/partials/navigation.css" />
+    <link rel="stylesheet" href="css/pages/home/hero.css" />
+    <link rel="stylesheet" href="css/buttons/buttons-copper.css" />
+    <link rel="stylesheet" href="css/pages/home/info.css" />
+    <link rel="stylesheet" href="css/partials/footer.css" />
     <script src="javascript/nav.js" defer></script>
   </head>
   <body>
-    <header class="generalNavigation">
+    <header class="general-navigation">
       <!-- Desktop Navigation -->
-      <nav class="desktopNavigation">
+      <nav class="desktop-navigation">
         <ul>
           <li class="logo">
-            <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+            <a href="index.html">
+              <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+            </a>
           </li>
-          <li class="home"><a href="index.html">home</a></li>
-          <li class="desktopTrigger">
-            <a href="portfolio.html">portfolio</a
+          <li class="home">
+            <a href="index.html" class="desktop-link">home</a>
+          </li>
+          <li class="desktop-trigger">
+            <a href="portfolio.html" class="desktop-link">portfolio</a
             ><i class="fa-solid fa-chevron-down"></i>
             <ul class="dropdown">
-              <li><a href="pencil.html">pencil & ink</a></li>
-              <li><a href="#">digital</a></li>
-              <li><a href="#">photography</a></li>
+              <li>
+                <a href="pencil.html" class="desktop-link">pencil & ink</a>
+              </li>
+              <li><a href="#" class="desktop-link">digital</a></li>
+              <li><a href="#" class="desktop-link">photography</a></li>
             </ul>
           </li>
-          <li class="about"><a href="#">about</a></li>
-          <li class="contact"><a href="contact.html">contact</a></li>
+          <li class="about">
+            <a href="about.html" class="desktop-link">about</a>
+          </li>
+          <li class="desktop-trigger contact">
+            <a href="contact.html" class="desktop-link">contact</a>
+            <i class="fa-solid fa-chevron-down"></i>
+            <ul class="dropdown">
+              <li>
+                <a href="blog.html" class="desktop-link">blog</a>
+              </li>
+          </li>
         </ul>
       </nav>
       <!-- Mobile Navigation -->
-      <nav class="mobileNavigation">
+      <nav class="mobile-navigation">
         <a href="index.html" class="logo">
           <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
         </a>
-        <button class="mobileTrigger">☰</button>
+        <button class="mobile-trigger">☰</button>
         <div class="links">
           <a href="index.html">home</a>
-          <a href="portfolio.html">portfolio</a>
-          <a href="#">about</a>
-          <a href="contact.html">contact</a>
+          <div class="mobile-sub-nav">
+            <a href="portfolio.html">portfolio</a
+            ><i class="portfolio-button fa-solid fa-chevron-down"></i>
+            <div class="portfolio-sub-content-hidden">
+              <a href="pencil.html">pencil & ink</a>
+              <a href="#digital">digital</a>
+              <a href="#photography">photography</a>
+            </div>
+          </div>
+          <a href="about.html">about</a>
+          <div class="mobile-sub-nav">
+            <a href="contact.html">contact</a>
+            <i class="contact-button fa-solid fa-chevron-down"></i>
+            <div class="contact-sub-content-hidden">
+              <a href="blog.html">blog</a>
+            </div>
         </div>
       </nav>
     </header>
     <!-- Hero -->
-    <main class="heroContainer">
-      <section class="heroTitle">
+    <main class="hero-container">
+      <section class="hero-title">
         <h1>Ida Watson</h1>
         <p>A freelance artist and designer based in Schwyz, Switzerland.</p>
-        <div class="buttonContainer">
+        <div class="button-container">
           <a href="portfolio.html" class="button">Portfolio</a>
         </div>
       </section>
     </main>
-    <article class="infoContainer">
+    <article class="info-container">
       <!-- About Container -->
       <section class="subpage">
-        <div class="imgContainer">
+        <div class="img-container">
           <img
             src="images/about.jpeg"
             alt="Ida Watson on a ladder picking apples."
@@ -112,7 +140,7 @@
               Do you want to know more about the artist? Where does she gather
               inspiration and what motivates her?
             </p>
-            <div class="buttonContainer">
+            <div class="button-container">
               <a href="#" class="button">About</a>
             </div>
           </section>
@@ -120,7 +148,7 @@
       </section>
       <!-- Contact Container -->
       <section class="subpage">
-        <div class="imgContainer">
+        <div class="img-container">
           <img
             src="images/contact.jpeg"
             alt="Cat and dog on stairs in front of a house."
@@ -133,7 +161,7 @@
               Do you have any questions? Are you interested in a project
               collaboration or do you have a commission request?
             </p>
-            <div class="buttonContainer">
+            <div class="button-container">
               <a href="contact.html" class="button">Contact</a>
             </div>
           </section>
@@ -141,8 +169,8 @@
       </section>
     </article>
     <!-- Footer -->
-    <footer class="mainFooter">
-      <ul class="socialLinks">
+    <footer class="main-footer">
+      <ul class="social-links">
         <li>
           <a href="mailto:idawatson@hotmail.com" target="_blank">
             <img src="icons/message.svg" alt="Message" />
@@ -159,7 +187,7 @@
           </a>
         </li>
       </ul>
-      <ul class="legalLinks">
+      <ul class="legal-links">
         <li class="policy">
           <a href="#">Privacy Policy</a>
         </li>

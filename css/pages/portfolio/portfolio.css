@@ -4,7 +4,7 @@ body {
   background-color: var(--white);
 }
 
-.portfolioContainer {
+.portfolio-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 4rem;
@@ -14,12 +14,12 @@ body {
   margin: 0 auto;
 }
 
-.imgContainer {
+.img-container {
   aspect-ratio: 1/1;
   position: relative;
 }
 
-.imgContainer img {
+.img-container img {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -32,7 +32,7 @@ body {
 }
 
 @media screen and (max-width: 850px) {
-  .portfolioContainer {
+  .portfolio-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
@@ -42,7 +42,7 @@ body {
     position: relative;
   }
 
-  .buttonContainer {
+  .button-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -50,13 +50,13 @@ body {
     transform: translate(-50%, -50%);
   }
 
-  .imgContainer img {
+  .img-container img {
     opacity: 20%;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .portfolioContainer {
+  .portfolio-container {
     padding: 0 2rem 2rem 2rem;
   }
 }

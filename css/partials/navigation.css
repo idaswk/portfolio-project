@@ -1,6 +1,6 @@
 /* Main Navigation */
 
-.generalNavigation {
+.general-navigation {
   top: 0;
   position: -webkit-sticky;
   position: sticky;
@@ -8,7 +8,7 @@
   z-index: 10;
 }
 
-.desktopNavigation > ul {
+.desktop-navigation > ul {
   width: 100%;
   background: rgba(255, 255, 255, 0.881);
   height: 6rem;
@@ -22,7 +22,7 @@
 }
 
 /* underline navigation */
-.desktopNavigation::after {
+.desktop-navigation::after {
   content: "";
   position: absolute;
   display: block;
@@ -68,7 +68,7 @@ li.home {
   order: 1;
 }
 
-li.desktopTrigger {
+li.desktop-trigger {
   -webkit-box-ordinal-group: 3;
   order: 2;
 }
@@ -83,22 +83,22 @@ li.contact {
   order: 5;
 }
 
-.desktopNavigation > ul li {
+.desktop-navigation > ul li {
   display: -webkit-box;
   display: flex;
   gap: 1rem;
   color: var(--black);
 }
 
-.desktopNavigation ul a:link,
-.desktopNavigation ul a:visited {
+.desktop-navigation ul a:link,
+.desktop-navigation ul a:visited {
   font-family: var(--nav);
   font-size: 1.2rem;
   position: relative;
 }
 
-.desktopNavigation > ul a:link::before,
-.desktopNavigation > ul a:visited::before {
+.desktop-navigation > ul a.desktop-link:link::before,
+.desktop-navigation > ul a.desktop-link:visited::before {
   content: "";
   position: absolute;
   display: block;
@@ -115,17 +115,17 @@ li.contact {
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
-.desktopNavigation > ul a:link:hover::before,
-.desktopNavigation > ul a:link:active::before {
+.desktop-navigation > ul a.desktop-link:link:hover::before,
+.desktop-navigation > ul a.desktop-link:link:active::before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
-li.desktopTrigger {
+li.desktop-trigger {
   position: relative;
 }
 
-.desktopTrigger i {
+.desktop-trigger i {
   font-size: 0.8em;
   padding-top: 8px;
 }
@@ -137,6 +137,7 @@ li.desktopTrigger {
   left: -18%;
   width: 140%;
   top: 100%;
+  padding-top: 2rem;
   background: -webkit-gradient(
     linear,
     left top,
@@ -147,7 +148,8 @@ li.desktopTrigger {
   );
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0) 10%,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.941),
     rgba(255, 255, 255, 0.941),
     #fff
   );
@@ -163,21 +165,21 @@ li.desktopTrigger {
   padding: 1.1rem 0 1.1rem 0;
 }
 
-.desktopTrigger:hover > .dropdown {
+.desktop-trigger:hover > .dropdown {
   height: auto;
   display: block;
 }
 
-.mobileNavigation {
+.mobile-navigation {
   display: none;
 }
 
 @media screen and (max-width: 850px) {
-  .desktopNavigation {
+  .desktop-navigation {
     display: none;
   }
 
-  .mobileNavigation {
+  .mobile-navigation {
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: horizontal;
@@ -204,11 +206,11 @@ li.desktopTrigger {
     width: 100%;
   }
 
-  button.mobileTrigger {
+  button.mobile-trigger {
     font-size: 2rem;
   }
 
-  .mobileNavigation::after {
+  .mobile-navigation::after {
     content: "";
     position: absolute;
     display: block;
@@ -242,22 +244,49 @@ li.desktopTrigger {
 
   .links.active {
     font-family: var(--nav);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
+    /* align-items: center; */
     position: absolute;
-    width: 280px;
+    width: 100%;
     height: 100vh;
     top: 100%;
     left: 0;
     right: 0;
-    color: var(--white);
-    background: rgba(0, 0, 0, 0.855);
-    padding: 2rem 0 2rem 1.2rem;
+    color: var(--lightgrey);
+    background: rgba(0, 0, 0, 0.937);
+    padding: 4rem 0 2rem 2rem;
     gap: 2.5rem;
+  }
+
+  .portfolio-sub-content-hidden,
+  .contact-sub-content-hidden {
+    display: none;
+  }
+
+  .portfolio-button,
+  .contact-button {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .portfolio-sub-content-visible,
+  .contact-sub-content-visible {
+    display: flex;
+    width: 100%;
+    /* align-items: center; */
+    flex-direction: column;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    gap: 1.5rem;
+    color: var(--lightgrey);
+    font-family: var(--header);
+    letter-spacing: var(--space);
   }
 }

@@ -9,7 +9,7 @@
   min-height: 100vh;
 }
 
-.mainFooter {
+.main-footer {
   -webkit-clip-path: polygon(0 0, 50% 30px, 100% 0, 100% 100%, 0 100%);
   clip-path: polygon(0 0, 50% 30px, 100% 0, 100% 100%, 0 100%);
   display: -webkit-box;
@@ -30,34 +30,34 @@
   flex: 1;
 }
 
-.legalLinks li small {
+.legal-links li small {
   font-size: 0.8rem;
 }
 
-ul.socialLinks,
+ul.social-links,
 small,
-.legalLinks {
+.legal-links {
   display: -webkit-box;
   display: flex;
 }
 
-.legalLinks {
+.legal-links {
   gap: 1rem;
 }
 
-.legalLinks li.policy,
-.legalLinks li.notice {
+.legal-links li.policy,
+.legal-links li.notice {
   border-right: 1px var(--white) solid;
   padding-right: 1rem;
 }
 
-.legalLinks li a:link,
-.legalLinks li a:visited {
+.legal-links li a:link,
+.legal-links li a:visited {
   position: relative;
 }
 
-.legalLinks li a:link::before,
-.legalLinks li a:visited::before {
+.legal-links li a:link::before,
+.legal-links li a:visited::before {
   content: "";
   position: absolute;
   display: block;
@@ -74,25 +74,30 @@ small,
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
-.legalLinks li a:hover::before,
-.legalLinks li a:active::before {
+.legal-links li a:hover::before,
+.legal-links li a:active::before {
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
 }
 
-.socialLinks {
+.social-links {
   display: -webkit-box;
   display: flex;
   gap: 3rem;
 }
 
-.socialLinks img {
+.social-links img {
   width: 40px;
   height: 40px;
 }
 
+.social-links img:hover,
+.social-links img:active {
+  border: solid 2px rgba(0, 0, 0, 0);
+}
+
 @media screen and (max-width: 900px) {
-  .mainFooter {
+  .main-footer {
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
@@ -102,53 +107,53 @@ small,
     padding: 4rem 0 3rem 0;
   }
 
-  .socialLinks {
+  .social-links {
     padding-top: 1rem;
   }
 
-  .legalLinks {
+  .legal-links {
     padding: 2.5rem 0 1rem 0;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .mainFooter {
+  .main-footer {
     font-size: 0.8rem;
   }
 
-  .socialLinks {
+  .social-links {
     gap: 4rem;
   }
 
-  .legalLinks {
+  .legal-links {
     gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
   }
 
-  .legalLinks li.policy {
+  .legal-links li.policy {
     padding-right: 2rem;
   }
 
-  .legalLinks li.notice {
+  .legal-links li.notice {
     padding-right: 0;
     border-right: none;
   }
 
-  .legalLinks li.copyright {
+  .legal-links li.copyright {
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  .legalLinks {
+  .legal-links {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-box-align: center;
     align-items: center;
   }
 
-  .legalLinks li small {
+  .legal-links li small {
     font-size: 0.7rem;
   }
 }

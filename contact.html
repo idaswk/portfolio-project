@@ -41,53 +41,82 @@
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="reset/reset.css" />
-    <link rel="stylesheet" href="variables/variables.css" />
-    <link rel="stylesheet" href="partials/navigation.css" />
-    <link rel="stylesheet" href="partials/title.css" />
-    <link rel="stylesheet" href="pages/contact/contact.css" />
-    <link rel="stylesheet" href="partials/footer.css" />
+    <link rel="stylesheet" href="css/reset/reset.css" />
+    <link rel="stylesheet" href="css/variables/variables.css" />
+    <link rel="stylesheet" href="css/partials/navigation.css" />
+    <link rel="stylesheet" href="css/partials/title.css" />
+    <link rel="stylesheet" href="css/pages/contact/contact.css" />
+    <link rel="stylesheet" href="css/partials/footer.css" />
     <script src="javascript/nav.js" defer></script>
   </head>
   <body>
-    <header class="generalNavigation">
+    <header class="general-navigation">
       <!-- Desktop Navigation -->
-      <nav class="desktopNavigation">
+      <nav class="desktop-navigation">
         <ul>
           <li class="logo">
-            <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+            <a href="index.html">
+              <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
+            </a>
           </li>
-          <li class="home"><a href="index.html">home</a></li>
-          <li class="desktopTrigger">
-            <a href="portfolio.html">portfolio</a
-            ><i class="fa-solid fa-chevron-down"></i>
+          <li class="home">
+            <a href="index.html" class="desktop-link">home</a>
+          </li>
+          <li class="desktop-trigger portfolio">
+            <a href="portfolio.html" class="desktop-link">portfolio</a>
+            <i class="fa-solid fa-chevron-down"></i>
             <ul class="dropdown">
-              <li><a href="pencil.html">pencil & ink</a></li>
-              <li><a href="#">digital</a></li>
-              <li><a href="#">photography</a></li>
+              <li>
+                <a href="pencil.html" class="desktop-link">pencil & ink</a>
+              </li>
+              <li><a href="#" class="desktop-link">digital</a></li>
+              <li><a href="#" class="desktop-link">photography</a></li>
             </ul>
           </li>
-          <li class="about"><a href="#">about</a></li>
-          <li class="contact"><a href="contact.html">contact</a></li>
+          <li class="about">
+            <a href="about.html" class="desktop-link">about</a>
+          </li>
+          <li class="desktop-trigger contact">
+            <a href="contact.html" class="desktop-link">contact</a>
+            <i class="fa-solid fa-chevron-down"></i>
+            <ul class="dropdown">
+              <li>
+                <a href="blog.html" class="desktop-link">blog</a>
+              </li>
+          </li>
         </ul>
       </nav>
       <!-- Mobile Navigation -->
-      <nav class="mobileNavigation">
+      <nav class="mobile-navigation">
         <a href="index.html" class="logo">
           <img src="logo/logo.svg" alt="Logo spelling Ida Watson" />
         </a>
-        <button class="mobileTrigger">☰</button>
+        <button class="mobile-trigger">☰</button>
         <div class="links">
           <a href="index.html">home</a>
-          <a href="portfolio.html">portfolio</a>
-          <a href="#">about</a>
-          <a href="contact.html">contact</a>
+          <div class="mobile-sub-nav">
+            <a href="portfolio.html">portfolio</a>
+            <i class="portfolio-button fa-solid fa-chevron-down"></i>
+            <div class="portfolio-sub-content-hidden">
+              <a href="pencil.html">pencil & ink</a>
+              <a href="#digital">digital</a>
+              <a href="#photography">photography</a>
+            </div>
+          </div>
+          <a href="about.html">about</a>
+          <div class="mobile-sub-nav">
+            <a href="contact.html">contact</a>
+            <i class="contact-button fa-solid fa-chevron-down"></i>
+            <div class="contact-sub-content-hidden">
+              <a href="blog.html">blog</a>
+            </div>
+          </div>
         </div>
       </nav>
     </header>
     <main>
       <h1 class="title">contact</h1>
-      <section class="contactContainer">
+      <section class="contact-container">
         <!-- General Information -->
         <article class="info">
           <div class="info--1">
@@ -109,17 +138,31 @@
         <article class="form">
           <form action="#">
             <h2>Personal Details</h2>
-            <div class="inputPersonal">
+            <div class="input-personal">
+              <label for="title">Title</label>
+              <select type="select" id="title">
+                <option value="mr">Mr</option>
+                <option value="mrs">Mrs</option>
+                <option value="miss">Miss</option>
+                <option value="ms">Ms</option>
+                <option value="other">Other</option>
+              </select>
               <label for="firstName">First Name</label>
               <input type="text" id="firstName" placeholder="First Name" />
               <label for="surname">Surname</label>
               <input type="text" id="surname" placeholder="Surname" />
-            </div>
-            <div class="inputPersonal">
               <label for="email">Email</label>
               <input type="email" id="email" placeholder="Email" />
               <label for="phone">Phone Number</label>
               <input type="tel" id="phone" placeholder="Phone Number" />
+            </div>
+            <div class="input-location">
+              <label for="address">Address</label>
+              <input type="text" id="address" placeholder="Address" />
+              <label for="zip">Zip Code</label>
+              <input type="text" id="zip" placeholder="Zip Code" />
+              <label for="location">Location</label>
+              <input type="text" id="location" placeholder="Area/Location" />
             </div>
             <h2>Project Details</h2>
             <label for="project">Which service are you interested in?</label>
@@ -141,8 +184,8 @@
       </section>
     </main>
     <!-- Footer -->
-    <footer class="mainFooter">
-      <ul class="socialLinks">
+    <footer class="main-footer">
+      <ul class="social-links">
         <li>
           <a href="mailto:idawatson@hotmail.com">
             <img src="icons/message.svg" alt="Message" />
@@ -159,7 +202,7 @@
           </a>
         </li>
       </ul>
-      <ul class="legalLinks">
+      <ul class="legal-links">
         <li class="policy">
           <a href="#">Privacy Policy</a>
         </li>
