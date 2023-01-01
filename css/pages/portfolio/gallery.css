@@ -13,13 +13,14 @@
   height: auto;
   object-fit: cover;
   aspect-ratio: 1/1;
+  cursor: pointer;
 }
 
-/* Popup Window */
+/* Popup Window on click */
 .img-window {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   position: fixed;
   top: 0;
   left: 0;
@@ -37,9 +38,49 @@
   z-index: 200;
 }
 
+.img-btn-next,
+.img-btn-prev {
+  display: block;
+  font-size: 4rem;
+  position: fixed;
+  top: 50vh;
+  z-index: 300;
+  color: var(--darkestgrey);
+  cursor: pointer;
+}
+
+.img-btn-next {
+  right: 20vw;
+}
+
+.img-btn-next:hover,
+.img-btn-next:active,
+.img-btn-prev:hover,
+.img-btn-prev:active {
+  color: var(--mediumgrey);
+  transition: 0.2s ease-out;
+}
+
+.img-btn-prev {
+  left: 20vw;
+}
+
 @media screen and (max-width: 800px) {
   .gallery-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+  }
+
+  .img-btn-next,
+  .img-btn-prev {
+    font-size: 2rem;
+  }
+
+  .img-btn-next {
+    right: 20px;
+  }
+
+  .img-btn-prev {
+    left: 20px;
   }
 }
