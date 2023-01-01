@@ -13,10 +13,8 @@
   background: rgba(255, 255, 255, 0.881);
   height: 6rem;
   font-weight: 400;
-  display: -webkit-box;
   display: flex;
   justify-content: space-around;
-  -webkit-box-align: center;
   align-items: center;
   gap: 2rem;
 }
@@ -30,16 +28,6 @@
   height: 1px;
   bottom: 0;
   left: 0;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(0, 0, 0, 0)),
-    color-stop(rgba(0, 0, 0, 0.256)),
-    color-stop(var(--black)),
-    color-stop(rgba(0, 0, 0, 0.256)),
-    to(rgba(0, 0, 0, 0))
-  );
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0),
@@ -54,7 +42,6 @@ li.logo {
   width: 100px;
   height: auto;
   margin-right: 2rem;
-  -webkit-box-ordinal-group: 4;
   order: 3;
 }
 
@@ -64,27 +51,22 @@ li.logo img {
 }
 
 li.home {
-  -webkit-box-ordinal-group: 2;
   order: 1;
 }
 
 li.desktop-trigger {
-  -webkit-box-ordinal-group: 3;
   order: 2;
 }
 
 li.about {
-  -webkit-box-ordinal-group: 5;
   order: 4;
 }
 
 li.contact {
-  -webkit-box-ordinal-group: 6;
   order: 5;
 }
 
 .desktop-navigation > ul li {
-  display: -webkit-box;
   display: flex;
   gap: 1rem;
   color: var(--black);
@@ -107,17 +89,12 @@ li.contact {
   bottom: 0;
   left: 0;
   background-color: #000;
-  -webkit-transform: scaleX(0);
   transform: scaleX(0);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .desktop-navigation > ul a.desktop-link:link:hover::before,
 .desktop-navigation > ul a.desktop-link:link:active::before {
-  -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
@@ -139,14 +116,6 @@ li.desktop-trigger {
   width: 140%;
   top: 100%;
   padding-top: 2rem;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(20%, rgba(255, 255, 255, 0)),
-    color-stop(rgba(255, 255, 255, 0.941)),
-    to(#fff)
-  );
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0),
@@ -181,14 +150,9 @@ li.desktop-trigger {
   }
 
   .mobile-navigation {
-    display: -webkit-box;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
     flex-direction: row-reverse;
-    -webkit-box-pack: justify;
     justify-content: space-between;
-    -webkit-box-align: center;
     align-items: center;
     background: rgba(255, 255, 255, 0.744);
     height: 5rem;
@@ -254,16 +218,6 @@ li.desktop-trigger {
     height: 1px;
     bottom: 0;
     left: 0;
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      from(rgba(0, 0, 0, 0)),
-      color-stop(rgba(0, 0, 0, 0.256)),
-      color-stop(var(--black)),
-      color-stop(rgba(0, 0, 0, 0.256)),
-      to(rgba(0, 0, 0, 0))
-    );
     background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0),
@@ -282,10 +236,7 @@ li.desktop-trigger {
     font-family: var(--nav);
     font-size: 1.5rem;
     line-height: 3rem;
-    display: -webkit-box;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
     flex-direction: column;
     /* align-items: center; */
     position: absolute;

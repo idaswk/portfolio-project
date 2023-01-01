@@ -71,16 +71,11 @@ input#address {
   bottom: 0;
   left: 0;
   background-color: var(--copper);
-  -webkit-transform: scaleX(1);
   transform: scaleX(1);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .info--1 a:hover::before {
-  -webkit-transform: scaleX(0);
   transform: scaleX(0);
 }
 
@@ -172,7 +167,6 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background: var(--copper);
   color: var(--white);
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 

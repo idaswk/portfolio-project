@@ -31,14 +31,11 @@ body {
   object-fit: cover;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
 .info-container .info {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
   justify-content: center;
   padding: 3rem 0 3rem 0;
 }
