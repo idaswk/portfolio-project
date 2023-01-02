@@ -246,7 +246,7 @@ li.desktop-trigger {
     left: 0;
     right: 0;
     color: var(--lightgrey);
-    background: rgba(0, 0, 0, 0.937);
+    background: var(--black);
     padding: 4rem 0 2rem 2rem;
     gap: 2.5rem;
   }

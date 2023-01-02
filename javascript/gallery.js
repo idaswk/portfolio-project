@@ -1,71 +1,89 @@
-// Create Image Gallery
-let galleryImages = document.querySelectorAll(".gallery-image");
-let getLatestOpenedImg;
-let windowWidth = window.innerWidth;
+/* --------------- */
+/* QUERY SELECTORS */
+/* --------------- */
 
-galleryImages.forEach(function (image, index) {
-  image.onclick = function () {
-    getLatestOpenedImg = index++;
+const lightboxEnabled = document.querySelectorAll(".lightbox-enabled");
+const lightboxArray = Array.from(lightboxEnabled);
+const lastImage = lightboxArray.length - 1;
+const lightboxContainer = document.querySelector(".lightbox-container");
+const lightboxImage = document.querySelector(".lightbox-image");
 
-    let container = document.body;
-    let newImgWindow = document.createElement("div");
-    container.appendChild(newImgWindow);
-    newImgWindow.setAttribute("class", "img-window");
-    newImgWindow.setAttribute("onclick", "closeImg()");
+const lightboxBtns = document.querySelectorAll(".lightbox-btn");
+const lightboxBtnRight = document.querySelector("#right");
+const lightboxBtnLeft = document.querySelector("#left");
 
-    // Selects the entire HTML-Image tag
-    let newImg = image.firstElementChild.cloneNode();
-    // Appending the image to the div we created before
-    newImgWindow.appendChild(newImg);
-    newImg.classList.remove("image");
-    newImg.classList.add("popup-img");
-    newImg.setAttribute("id", "current-img");
+let activeImage;
 
-    newImg.onload = function () {
-      let newNextBtn = document.createElement("a");
-      newNextBtn.innerHTML = `<i class="fas fa-chevron-right"></i>`;
-      container.appendChild(newNextBtn);
-      newNextBtn.setAttribute("class", "img-btn-next");
-      newNextBtn.setAttribute("onclick", "changeImg(1)");
+/* --------- */
+/* FUNCTIONS */
+/* --------- */
 
-      let newPrevBtn = document.createElement("a");
-      newPrevBtn.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
-      container.appendChild(newPrevBtn);
-      newPrevBtn.setAttribute("class", "img-btn-prev");
-      newPrevBtn.setAttribute("onclick", "changeImg(0)");
-    };
-  };
+// Adding the class "active" to lightboxContainer
+showLightBox = function () {
+  lightboxContainer.classList.add("active");
+};
+
+// Removing the class "active" to lightboxContainer
+hideLightBox = function () {
+  lightboxContainer.classList.remove("active");
+};
+
+setActiveImage = function (image) {
+  lightboxImage.src = image.dataset.imagesrc;
+  activeImage = lightboxArray.indexOf(image);
+};
+
+const transitionSlidesLeft = () => {
+  lightboxBtnLeft.focus();
+  activeImage === lastImage
+    ? setActiveImage(lightboxArray[0])
+    : setActiveImage(lightboxArray[activeImage].nextElementSibling);
+};
+
+const transitionSlidesRight = () => {
+  lightboxBtnLeft.focus();
+  activeImage === 0
+    ? setActiveImage(lightboxArray[lastImage])
+    : setActiveImage(lightboxArray[activeImage].previousElementSibling);
+};
+
+const transitionSlideHandler = (moveItem) => {
+  moveItem.includes("left" ? transitionSlidesLeft() : transitionSlidesRight());
+};
+
+/* --------------- */
+/* EVENT LISTENERS */
+/* --------------- */
+
+lightboxEnabled.forEach((image) => {
+  image.addEventListener("click", () => {
+    showLightBox();
+    setActiveImage(image);
+  });
 });
 
-function closeImg() {
-  document.querySelector(".img-window").remove();
-  document.querySelector(".img-btn-next").remove();
-  document.querySelector(".img-btn-prev").remove();
-}
+lightboxContainer.addEventListener("click", () => {
+  hideLightBox();
+});
 
-function changeImg(change) {
-  document.querySelector("#current-img").remove();
+lightboxBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    transitionSlideHandler(e.currentTarget.id);
+  });
+});
 
-  let getImgWindow = document.querySelector(".img-window");
-  let newImg = document.createElement("img");
-  getImgWindow.appendChild(newImg);
-
-  let calcNewImg;
-  if (change === 1) {
-    calcNewImg = getLatestOpenedImg + 1;
-    if (calcNewImg > galleryImages.length) {
-      calcNewImg = 1;
-    }
-  } else if (change === 0) {
-    calcNewImg = getLatestOpenedImg - 1;
-    if (calcNewImg < 1) {
-      calcNewImg = galleryImages.length;
-    }
+// Adding eventListener to arrow presses for buttons left and right
+window.addEventListener("keydown", (e) => {
+  // checks to see if the lightboxContainer is active, if not the eventListener
+  // will return/exit
+  if (!lightboxContainer.classList.contains("active")) return;
+  // checks if the left or right arrows on the keyboard are pressed
+  if (e.key === "Escape") {
+    hideLightBox();
   }
-
-  newImg.setAttribute("src", "images/pencil/img-" + calcNewImg + ".jpeg");
-  newImg.setAttribute("class", "popup-img");
-  newImg.setAttribute("id", "current-img");
-
-  getLatestOpenedImg = calcNewImg;
-}
+  if (e.key.includes("Left") || e.key.includes("Right")) {
+    e.preventDefault();
+    transitionSlideHandler(e.key.toLowerCase());
+  }
+});
