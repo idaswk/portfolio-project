@@ -17,13 +17,12 @@
 }
 
 .hero-container .hero-title h1 {
-  font-family: var(--body);
+  font-family: var(--title);
   font-size: 2rem;
   color: var(--copper);
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: var(--space);
-
+  /* text-transform: lowercase; */
+  font-weight: 500;
+  /* letter-spacing: var(--space); */
   position: relative;
   z-index: 5;
   display: inline-block;
@@ -36,7 +35,7 @@ h1::after {
   width: calc(100% + 4px);
   height: 65%;
   left: -2px;
-  bottom: 0;
+  bottom: 8px;
   z-index: -1;
   transform: rotate(-1.5deg);
   /* border-radius: 1.5rem; */
@@ -64,12 +63,25 @@ h1::after {
   }
 
   .hero-container .hero-title h1 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   .hero-container .hero-title p {
     font-size: 1.8rem;
     line-height: 2.3rem;
+  }
+
+  h1::after {
+    background-color: transparent;
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    transform: 0;
+    /* border-radius: 1.5rem; */
   }
 }
 

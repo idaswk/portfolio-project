@@ -21,12 +21,30 @@ label[for="project"],
   margin: 0 auto;
 }
 
-.info--1,
-.info--2,
-.info--3 {
-  font-family: var(--body);
-  font-size: 1rem;
-  letter-spacing: 0.5px;
+select#project {
+  margin: 0rem 0 1rem 0;
+}
+
+.input-personal {
+  display: -webkit-box;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.title-container {
+  grid-column: 1 / -1;
+}
+
+.input-location {
+  margin: 2rem 0 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.address-container {
+  grid-column: 1 / -1;
 }
 
 .info--1,
@@ -71,12 +89,13 @@ label[for="project"],
   margin-top: 3rem;
 }
 
-/* .input-personal label,
+.input-personal label,
 .input-location label,
 label[for="message"] {
+  /* display: none; */
   font-size: 12px;
   font-family: var(--body);
-} */
+}
 
 .info--3 > span {
   font-weight: 600;
@@ -95,29 +114,6 @@ form h2 {
   margin-bottom: 1rem;
 }
 
-.input-personal {
-  display: -webkit-box;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.title-container {
-  grid-column: 1 / -1;
-}
-
-.input-location {
-  margin: 2rem 0 2rem 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.address-container {
-  margin-top: 1rem;
-  grid-column: 1 / -1;
-}
-
 input,
 textarea,
 select {
@@ -125,112 +121,46 @@ select {
 }
 
 select#title,
+input#first-name,
+input#surname,
+input#email,
+input#phone,
+input#address,
+input#postal-code,
+input#location,
 select#project {
   padding: 0.5rem 0 0.5rem 0;
   border: none;
   border-bottom: 1px var(--darkestgrey) solid;
-  /* font-style: normal; */
-  /* font-size: 1rem; */
+  font-style: normal;
   background-color: var(--white);
-  margin-bottom: 1rem;
-}
-
-select {
-  font-family: var(--body);
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-}
-
-.first-name-container,
-.last-name-container,
-.email-container,
-.phone-container,
-.address-container,
-.postal-code-container,
-.area-container {
-  position: relative;
-  margin-bottom: 1.25em;
-}
-
-input {
-  border: 0;
-  border-bottom: 1px solid var(--darkestgrey);
-  outline: none;
-  padding: 0.2rem 0;
-  font-size: 1rem;
-  width: 100%;
-}
-
-label[for="first-name"],
-label[for="last-name"],
-label[for="email"],
-label[for="phone"],
-label[for="address"],
-label[for="postal-code"],
-label[for="area"] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: var(--body);
-  color: var(--mediumgrey);
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  cursor: text;
-  transition: 0.3s ease-in-out;
-  width: 100%;
-  font-size: 1rem;
-}
-
-label[for="title"] {
-  font-size: 12px;
-  font-family: var(--body);
-  letter-spacing: 0.5px;
-}
-
-input:focus + label,
-input:valid + label {
-  color: var(--darkestgrey);
-  font-size: 12px;
-  top: -25px;
-  pointer-events: none;
-}
-
-input:focus {
-  border-bottom: 2px solid var(--darkestgrey);
-}
-
-label[for="project"] {
-  margin: 1.5rem 0 0.5rem 0;
-  font-family: var(--body);
-  letter-spacing: 0.5px;
-  font-size: 12px;
-  color: var(--darkestgrey);
-}
-
-label[for="message"] {
-  display: none;
 }
 
 textarea#message {
   padding: 1rem;
   border: 1px var(--darkestgrey) solid;
+  font-style: normal;
   background-color: var(--white);
-  margin-bottom: 2rem;
-  resize: none;
 }
 
-textarea::placeholder {
-  font-family: var(--body);
-  letter-spacing: 0.5px;
+input::placeholder {
   font-style: italic;
-  font-size: 1rem;
   color: var(--darkgrey);
 }
 
-textarea:focus::placeholder {
+input:focus::placeholder {
   color: transparent;
   transition: 0.2s;
+}
+
+label[for="project"] {
+  margin: 1rem 0 0.5rem 0;
+  color: var(--darkestgrey);
+}
+
+textarea#message {
+  margin-bottom: 2rem;
+  resize: none;
 }
 
 #submit {
@@ -253,17 +183,6 @@ textarea:focus::placeholder {
   background: var(--copper);
   color: var(--white);
   transition: 0.5s;
-}
-
-form span {
-  color: rgb(246, 78, 78);
-  font-size: 0.7em;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-align: left;
-  width: 100%;
-  margin-top: 10px;
-  letter-spacing: 2px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -308,3 +227,17 @@ form span {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+/* .first-name-container {
+  position: relative;
+}
+
+.first-name-container label {
+  position: absolute;
+  transform-origin: top left;
+  transform: translate(0,);
+}
+
+input#first-name {
+  padding: 1.5rem 0 0.5rem 0;
+} */
