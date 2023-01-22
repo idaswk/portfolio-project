@@ -37,45 +37,57 @@ let validationErrors = {
 //   data.titleData = titleInput.value;
 // }
 
-// function detectErrorMessage() {
-//   if (document.querySelector("form span")) {
-//     document.querySelectorAll("form span").forEach((spanElement) => {
-//       spanElement.remove();
-//     });
-//   }
-// }
+// Function that detects if there are any error messages present
+// This can be used for each individual validation function
+function detectErrorMessage(containerName) {
+  if (document.querySelector(`.${containerName} span`)) {
+    document
+      .querySelectorAll(`.${containerName} span`)
+      .forEach((spanElement) => {
+        spanElement.remove();
+      });
+  }
+}
+
+function displayErrorMessage(errorMessage, containerName, idSelector) {
+  const errorDisplay = document.createElement("span");
+  errorDisplay.innerHTML = `${errorMessage}`;
+  document.querySelector(`.${containerName} label`).after(errorDisplay);
+  document.querySelector(`#${idSelector}`).style.borderBottomColor =
+    "rgb(246, 78, 78)";
+}
 
 function firstNameValidation() {
-  function detectErrorMessage() {
-    if (document.querySelector(".first-name-container span")) {
-      document
-        .querySelectorAll(".first-name-container span")
-        .forEach((spanElement) => {
-          spanElement.remove();
-        });
-    }
-  }
+  detectErrorMessage("first-name-container");
 
-  function displayErrorMessage() {
-    const errorDisplay = document.createElement("span");
-    errorDisplay.innerHTML = validationErrors.firstName;
-    document.querySelector(".first-name-container label").after(errorDisplay);
-    firstNameInput.style.borderBottomColor = "rgb(246, 78, 78)";
-  }
+  // function displayErrorMessage() {
+  //   const errorDisplay = document.createElement("span");
+  //   errorDisplay.innerHTML = validationErrors.firstName;
+  //   document.querySelector(".first-name-container label").after(errorDisplay);
+  //   firstNameInput.style.borderBottomColor = "rgb(246, 78, 78)";
+  // }
 
   firstName = firstNameInput.value;
   if (!firstName) {
     console.error("No first name provided");
     validationErrors.firstName = "Please provide a first name";
     detectErrorMessage();
-    displayErrorMessage();
+    displayErrorMessage(
+      validationErrors.firstName,
+      "first-name-container",
+      "first-name"
+    );
   } else {
     if (!nameRegEx.test(firstName)) {
       console.error("Invalid first name");
       validationErrors.firstName =
         "Invalid format - please avoid special characters";
       detectErrorMessage();
-      displayErrorMessage();
+      displayErrorMessage(
+        validationErrors.firstName,
+        "first-name-container",
+        "first-name"
+      );
     } else {
       console.info(`First name (${firstName}) is valid`);
       delete validationErrors.firstName;
@@ -89,36 +101,36 @@ function firstNameValidation() {
 console.log(validationErrors);
 
 function lastNameValidation() {
-  function detectErrorMessage() {
-    if (document.querySelector(".last-name-container span")) {
-      document
-        .querySelectorAll(".last-name-container span")
-        .forEach((spanElement) => {
-          spanElement.remove();
-        });
-    }
-  }
+  detectErrorMessage("last-name-container");
 
-  function displayErrorMessage() {
-    const errorDisplay = document.createElement("span");
-    errorDisplay.innerHTML = validationErrors.lastName;
-    document.querySelector(".last-name-container label").after(errorDisplay);
-    lastNameInput.style.borderBottomColor = "rgb(246, 78, 78)";
-  }
+  // function displayErrorMessage() {
+  //   const errorDisplay = document.createElement("span");
+  //   errorDisplay.innerHTML = validationErrors.lastName;
+  //   document.querySelector(".last-name-container label").after(errorDisplay);
+  //   lastNameInput.style.borderBottomColor = "rgb(246, 78, 78)";
+  // }
 
   lastName = lastNameInput.value;
   if (!lastName) {
     console.error("No last name provided");
     validationErrors.lastName = "Please provide a last name";
     detectErrorMessage();
-    displayErrorMessage();
+    displayErrorMessage(
+      validationErrors.lastName,
+      "last-name-container",
+      "last-name"
+    );
   } else {
     if (!nameRegEx.test(lastName)) {
       console.error("Invalid last name");
       validationErrors.lastName =
         "Invalid format - please avoid special characters and numbers";
       detectErrorMessage();
-      displayErrorMessage();
+      displayErrorMessage(
+        validationErrors.lastName,
+        "last-name-container",
+        "last-name"
+      );
     } else {
       console.info(`Last name (${lastName}) is valid`);
       delete validationErrors.lastName;
@@ -130,60 +142,52 @@ function lastNameValidation() {
 }
 
 function emailValidation() {
-  // detectErrorMessage();
-
-  function displayErrorMessage() {
-    const errorDisplay = document.createElement("span");
-    errorDisplay.innerHTML = validationErrors.email;
-    emailInput.after(errorDisplay);
-    emailInput.style.borderBottomColor = "rgb(246, 78, 78)";
-  }
+  detectErrorMessage("email-container");
 
   email = emailInput.value;
   if (!email) {
     console.error("Please enter valid E-Mail address");
     validationErrors.email = "Please provide an E-Mail address";
-    displayErrorMessage();
+    detectErrorMessage();
+    displayErrorMessage(validationErrors.email, "email-container", "email");
   } else {
     const emailRegEx =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailRegEx.test(email)) {
       console.error("Invalid E-Mail");
       validationErrors.email = "Invalid format (max@mustermann.ch)";
-      displayErrorMessage();
+      detectErrorMessage();
+      displayErrorMessage(validationErrors.email, "email-container", "email");
     } else {
       console.info("Valid E-Mail address :)");
       delete validationErrors.email;
+      detectErrorMessage();
       console.log(validationErrors);
     }
   }
 }
 
 function phoneValidation() {
-  // detectErrorMessage();
-
-  function displayErrorMessage() {
-    const errorDisplay = document.createElement("span");
-    errorDisplay.innerHTML = validationErrors.phone;
-    phoneInput.after(errorDisplay);
-    phoneInput.style.borderBottomColor = "rgb(246, 78, 78)";
-  }
+  detectErrorMessage("phone-container");
 
   phone = phoneInput.value;
   if (!phone) {
     console.error("No phone number provided");
     validationErrors.phone = "No phone number provided";
-    displayErrorMessage();
+    detectErrorMessage();
+    displayErrorMessage(validationErrors.phone, "phone-container", "phone");
   } else {
     const phoneRegEx = /^(\+|00)(?:[0-9] ?){6,14}[0-9]$/;
     if (!phoneRegEx.test(phone)) {
       console.error("Invalid phone number");
       validationErrors.phone =
         "Invalid format - please include 00 or +, followed by the country code";
-      displayErrorMessage();
+      detectErrorMessage();
+      displayErrorMessage(validationErrors.phone, "phone-container", "phone");
     } else {
       console.info(`Phone number (${phone}) is valid`);
       delete validationErrors.phone;
+      detectErrorMessage();
       console.log(validationErrors);
     }
   }
