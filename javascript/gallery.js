@@ -26,46 +26,46 @@ let slideInterval, activeImage;
 /* --------- */
 
 // Adding the class "active" to lightboxContainer
-function pauseSlideshow() {
+const pauseSlideshow = () => {
   playing = false;
   clearInterval(slideInterval);
-}
+};
 
-function playSlideshow() {
+const playSlideshow = () => {
   playing = true;
-  slideInterval = setInterval(slideLeft, 3000);
-}
+  slideInterval = setInterval(slideRight, 3000);
+};
 
-function resetInterval() {
+const resetInterval = () => {
   clearInterval(slideInterval);
   playSlideshow();
-}
+};
 
 // Adding the class "active" to lightboxContainer
-openLightbox = function () {
+const openLightbox = () => {
   lightboxContainer.classList.add("active");
   resetInterval();
 };
 
 // Removing the class "active" from lightboxContainer
-closeLightbox = function () {
+const closeLightbox = () => {
   lightboxContainer.classList.remove("active");
   playing = true;
 };
 
-setCurrentImage = function (image) {
+const setCurrentImage = (image) => {
   lightboxImage.src = image.dataset.imagesrc;
   activeImage = lightboxArray.indexOf(image);
 };
 
-const slideLeft = () => {
-  lightboxBtnLeft.focus();
+const slideRight = () => {
+  lightboxBtnRight.focus();
   activeImage === prevImage
     ? setCurrentImage(lightboxArray[0])
     : setCurrentImage(lightboxArray[activeImage].nextElementSibling);
 };
 
-const slideRight = () => {
+const slideLeft = () => {
   lightboxBtnLeft.focus();
   activeImage === 0
     ? setCurrentImage(lightboxArray[prevImage])
@@ -73,7 +73,7 @@ const slideRight = () => {
 };
 
 const transitionSlideHandler = (moveItem) => {
-  moveItem.includes("left" ? slideLeft() : slideRight());
+  moveItem.includes("left") ? slideLeft() : slideRight();
 };
 
 /* --------------- */
