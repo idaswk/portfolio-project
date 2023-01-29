@@ -186,7 +186,7 @@ function phoneValidation() {
   phone = phoneInput.value;
   if (!phone) {
     console.error("No phone number provided");
-    validationErrors.phone = "No phone number provided";
+    validationErrors.phone = "Please provide a phone number";
     detectErrorMessage();
     displayErrorMessage(validationErrors.phone, "phone-container", "phone");
   } else {
@@ -212,7 +212,7 @@ function addressValidation() {
   address = addressInput.value;
   if (!address) {
     console.error("No address provided");
-    validationErrors.address = "No address provided";
+    validationErrors.address = "Please provide an address";
     detectErrorMessage();
     displayErrorMessage(
       validationErrors.address,
@@ -234,7 +234,7 @@ function postalCodeValidation() {
   postalCode = postalCodeInput.value;
   if (!postalCode) {
     console.error("No postal code provided");
-    validationErrors.postalCode = "No postal code provided";
+    validationErrors.postalCode = "Please provide a postal code";
     detectErrorMessage();
     displayErrorMessage(
       validationErrors.postalCode,
@@ -272,12 +272,12 @@ function areaValidation() {
 
   area = areaInput.value;
   if (!area) {
-    console.error("No location provided");
-    validationErrors.area = "No location provided";
+    console.error("No area provided");
+    validationErrors.area = "Please provide an area";
     detectErrorMessage();
     displayErrorMessage(validationErrors.area, "area-container", "area");
   } else {
-    console.info(`Location provided: ${area}`);
+    console.info(`Area provided: ${area}`);
     delete validationErrors.area;
     detectErrorMessage();
     styleConfirmation(areaInput);
@@ -289,48 +289,32 @@ function projectValidation() {
   project = projectInput.value;
 }
 
-// textareaInput.addEventListener("input", (textAreaInput) => {
-//   // Initialize the counter to 30
-//   let counter = 30;
-
-//   // If else, counterBox div exists
-//   if (!document.querySelector(".counterBox")) {
-//     const counterBox = document.createElement("span");
-//     // set the class of the span element
-//     counterBox.setAttribute("class", "counterBox");
-//     counterBox.innerHTML = `Characters needed: ${
-//       counter - textAreaInput.target.textLength
-//     }`;
-//     textAreaInput.target.before(counterBox);
-//   } else {
-//     document.querySelector(".counterBox").innerHTML = `Characters needed: ${
-//       counter - textAreaInput.target.textLength
-//     }`;
-//   }
-
-//   // Check if the required characters are met
-//   if (textAreaInput.target.textLength < 31) {
-//     // reset of the font color if textlength < 31
-//     document.querySelector(".counterBox").style.color = "red";
-//   } else {
-//     document.querySelector(".counterBox").innerHTML = "Desired amount reached";
-//     document.querySelector(".counterBox").style.color = "green";
-//   }
-// });
-
 function messageValidation() {
   detectErrorMessage("message-container");
 
   message = messageInput.value;
   if (!message) {
     console.error("No message provided");
-    validationErrors.message = "No message provided";
+    validationErrors.message = "Please provide a message";
     detectErrorMessage();
+    displayErrorMessage(
+      validationErrors.message,
+      "message-container",
+      "message"
+    );
+    document.querySelector("#message").style.borderBottomColor = "var(--black)";
   } else {
     if (message.length <= 30) {
       console.error("Not enough characters");
       validationErrors.message = "Not enough characters (min. 30)";
       detectErrorMessage();
+      displayErrorMessage(
+        validationErrors.message,
+        "message-container",
+        "message"
+      );
+      document.querySelector("#message").style.borderBottomColor =
+        "var(--black)";
     } else {
       console.info("Message has enough characters");
       delete validationErrors.message;
