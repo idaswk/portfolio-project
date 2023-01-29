@@ -12,7 +12,6 @@ const addressInput = document.querySelector("#address");
 const postalCodeInput = document.querySelector("#postal-code");
 const areaInput = document.querySelector("#area");
 const projectInput = document.querySelector("#project");
-const textareaInput = document.querySelector("textarea");
 const messageInput = document.querySelector("#message");
 const formSubmit = document.querySelector("#submit");
 
@@ -27,13 +26,15 @@ const zipRegExUK =
   /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/;
 
 // Objects for collecting user input
-const selectTags = document.getElementsByTagName("select");
-const inputsOnSubmit = document.querySelectorAll(
-  "input:not(#submit), #message"
-);
 
-let title = titleInput[0];
-let project = projectInput[0];
+// const form = document.querySelector(".form");
+
+// const inputs = document.querySelectorAll(
+//   "#first-name, #last-name, #email, #phone, #address, #postal-code, #area, #message"
+// );
+
+const inputsOnSubmit = document.querySelectorAll("input:not(#submit)");
+
 let firstName, lastName, email, phone, address, postalCode, area, message;
 let data = {};
 let validationErrors = {
@@ -51,9 +52,9 @@ let validationErrors = {
 /* FUNCTIONS */
 /* --------- */
 
-function titleValidation() {
-  title = titleInput.value;
-}
+// function titleValidation() {
+//   data.titleData = titleInput.value;
+// }
 
 // Function that detects if there are any error messages present
 // This can be used for each individual validation function
@@ -75,16 +76,6 @@ function displayErrorMessage(errorMessage, containerName, idSelector) {
   document.querySelector(`.${containerName} label`).after(errorDisplay);
   document.querySelector(`#${idSelector}`).style.borderBottomColor =
     "rgb(246, 78, 78)";
-}
-
-function styleConfirmation(inputSelector) {
-  inputSelector.style.borderBottom = "solid 1px green";
-}
-
-function removeSubmitMessage() {
-  setTimeout(() => {
-    document.querySelector(".submit-container span").remove();
-  }, 5000);
 }
 
 function firstNameValidation() {
@@ -115,7 +106,7 @@ function firstNameValidation() {
       console.info(`First name (${firstName}) is valid`);
       delete validationErrors.firstName;
       detectErrorMessage();
-      styleConfirmation(firstNameInput);
+      firstNameInput.style.borderBottom = "solid 2px green";
       console.log(validationErrors);
     }
   }
@@ -149,7 +140,7 @@ function lastNameValidation() {
       console.info(`Last name (${lastName}) is valid`);
       delete validationErrors.lastName;
       detectErrorMessage();
-      styleConfirmation(lastNameInput);
+      lastNameInput.style.borderBottom = "solid 2px green";
       console.log(validationErrors);
     }
   }
@@ -165,6 +156,8 @@ function emailValidation() {
     detectErrorMessage();
     displayErrorMessage(validationErrors.email, "email-container", "email");
   } else {
+    // const emailRegEx =
+    //   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailRegEx.test(email)) {
       console.error("Invalid E-Mail");
       validationErrors.email = "Invalid format (max@mustermann.ch)";
@@ -174,7 +167,7 @@ function emailValidation() {
       console.info("Valid E-Mail address :)");
       delete validationErrors.email;
       detectErrorMessage();
-      styleConfirmation(emailInput);
+      emailInput.style.borderBottom = "solid 2px green";
       console.log(validationErrors);
     }
   }
@@ -190,6 +183,7 @@ function phoneValidation() {
     detectErrorMessage();
     displayErrorMessage(validationErrors.phone, "phone-container", "phone");
   } else {
+    // const phoneRegEx = /^(\+|00)(?:[0-9] ?){6,14}[0-9]$/;
     if (!phoneRegEx.test(phone)) {
       console.error("Invalid phone number");
       validationErrors.phone =
@@ -200,7 +194,7 @@ function phoneValidation() {
       console.info(`Phone number (${phone}) is valid`);
       delete validationErrors.phone;
       detectErrorMessage();
-      styleConfirmation(phoneInput);
+      phoneInput.style.borderBottom = "solid 2px green";
       console.log(validationErrors);
     }
   }
@@ -223,7 +217,7 @@ function addressValidation() {
     console.info(`Address provided: ${address}`);
     delete validationErrors.address;
     detectErrorMessage();
-    styleConfirmation(addressInput);
+    addressInput.style.borderBottom = "solid 2px green";
     console.log(validationErrors);
   }
 }
@@ -242,6 +236,10 @@ function postalCodeValidation() {
       "postal-code"
     );
   } else {
+    // const zipRegExGeneral = /^[a-z0-9][a-z0-9\- ]{0,10}[a-z0-9]$/;
+    // const zipRegExCanada = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+    // const zipRegExUK =
+    //   /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/;
     if (
       !(
         zipRegExGeneral.test(postalCode) ||
@@ -261,7 +259,7 @@ function postalCodeValidation() {
       console.info(`Postal code (${postalCode}) is valid`);
       delete validationErrors.postalCode;
       detectErrorMessage();
-      styleConfirmation(postalCodeInput);
+      postalCodeInput.style.borderBottom = "solid 2px green";
       console.log(validationErrors);
     }
   }
@@ -280,62 +278,23 @@ function areaValidation() {
     console.info(`Location provided: ${area}`);
     delete validationErrors.area;
     detectErrorMessage();
-    styleConfirmation(areaInput);
+    areaInput.style.borderBottom = "solid 2px green";
     console.log(validationErrors);
   }
 }
 
-function projectValidation() {
-  project = projectInput.value;
-}
-
-// textareaInput.addEventListener("input", (textAreaInput) => {
-//   // Initialize the counter to 30
-//   let counter = 30;
-
-//   // If else, counterBox div exists
-//   if (!document.querySelector(".counterBox")) {
-//     const counterBox = document.createElement("span");
-//     // set the class of the span element
-//     counterBox.setAttribute("class", "counterBox");
-//     counterBox.innerHTML = `Characters needed: ${
-//       counter - textAreaInput.target.textLength
-//     }`;
-//     textAreaInput.target.before(counterBox);
-//   } else {
-//     document.querySelector(".counterBox").innerHTML = `Characters needed: ${
-//       counter - textAreaInput.target.textLength
-//     }`;
-//   }
-
-//   // Check if the required characters are met
-//   if (textAreaInput.target.textLength < 31) {
-//     // reset of the font color if textlength < 31
-//     document.querySelector(".counterBox").style.color = "red";
-//   } else {
-//     document.querySelector(".counterBox").innerHTML = "Desired amount reached";
-//     document.querySelector(".counterBox").style.color = "green";
-//   }
-// });
-
 function messageValidation() {
-  detectErrorMessage("message-container");
-
   message = messageInput.value;
   if (!message) {
     console.error("No message provided");
     validationErrors.message = "No message provided";
-    detectErrorMessage();
   } else {
     if (message.length <= 30) {
       console.error("Not enough characters");
       validationErrors.message = "Not enough characters (min. 30)";
-      detectErrorMessage();
     } else {
       console.info("Message has enough characters");
       delete validationErrors.message;
-      console.log(validationErrors);
-      detectErrorMessage();
       console.log(validationErrors);
     }
   }
@@ -353,27 +312,20 @@ function validateForm(event) {
     console.error("Form is not complete");
     const submitError = document.createElement("span");
     submitError.innerHTML = "Please complete the form";
-    formSubmit.after(submitError);
-
-    removeSubmitMessage();
+    document.querySelector("#submit").after(submitError);
   } else {
     // If there are no validation errors,
     // send form to backend (we use console.log because we have not worked with backend yet)
     // form.reset();
     console.info("Sending form data to backend");
-
     const submitValidation = document.createElement("span");
     submitValidation.innerHTML = "Thank you!";
-    formSubmit.after(submitValidation);
-    document.querySelector(".submit-container span").style.color =
-      "var(--black)";
-
-    removeSubmitMessage();
+    document.querySelector("#submit").after(submitValidation);
+    document.querySelector(".submit-container span").style.color = "green";
 
     // (Theoretically) The input data of the user should be sent to the
     // data object we have defined, so we can later send this information to
     // the backend.
-    data.title = title;
     data.firstName = firstName;
     data.lastName = lastName;
     data.email = email;
@@ -381,22 +333,16 @@ function validateForm(event) {
     data.address = address;
     data.postalCode = postalCode;
     data.area = area;
-    data.project = project;
     data.message = message;
 
     console.log(data);
 
-    // When the input has been saved to the backend, the input fields need to
-    // be cleared
     inputsOnSubmit.forEach((input) => {
       input.value = "";
       input.style.borderBottom = "1px solid black";
     });
 
-    // Resetting the dropdowns to their default value
-    for (var i = 0; i < selectTags.length; i++) {
-      selectTags[i].selectedIndex = 0;
-    }
+    messageInput.value = "";
 
     data = {};
     validationErrors = {
@@ -410,7 +356,6 @@ function validateForm(event) {
       message,
     };
   }
-  // the object "data" has now been cleard in case of another input
   console.log(data);
 }
 
@@ -418,20 +363,20 @@ function validateForm(event) {
 /* EVENT LISTENERS */
 /* --------------- */
 
-titleInput.addEventListener("focusout", titleValidation);
+// titleInput.addEventListener("focusout", titleValidation);
 firstNameInput.addEventListener("focusout", firstNameValidation);
 lastNameInput.addEventListener("focusout", lastNameValidation);
 emailInput.addEventListener("focusout", emailValidation);
 phoneInput.addEventListener("focusout", phoneValidation);
 addressInput.addEventListener("focusout", addressValidation);
 postalCodeInput.addEventListener("focusout", postalCodeValidation);
-projectInput.addEventListener("focusout", projectValidation);
 areaInput.addEventListener("focusout", areaValidation);
 messageInput.addEventListener("focusout", messageValidation);
+// formSubmit.addEventListener("submit", validateForm);
 formSubmit.addEventListener("click", validateForm);
 
 // document.querySelectorAll('input').forEach( element => {
-//   element.addEventListener('focusout', func => {
+//   element.addEventListener('focusout', e => {
 
 //   })
 // })
