@@ -1,7 +1,7 @@
 :root {
   /* Colours */
   --copper: #aa5236;
-  --beige: #d1bcad;
+  --beige: #e4cfc0;
   --lightbrown: #bb8c6a;
   --green: #596c46;
   --black: #000000;
@@ -10,6 +10,7 @@
   --mediumgrey: #9d9898;
   --darkgrey: #707070;
   --darkestgrey: #292929;
+  --red: rgb(246, 78, 78);
 
   /* Typography */
   --nav: "Aptly", sans-serif;

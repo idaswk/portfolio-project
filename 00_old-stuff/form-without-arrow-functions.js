@@ -17,9 +17,7 @@ const messageInput = document.querySelector("#message");
 const formSubmit = document.querySelector("#submit");
 
 // RegExes
-// const nameRegEx = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{0,}$/;
-const nameRegEx =
-  /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.’-]+$/;
+const nameRegEx = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{0,}$/;
 const emailRegEx =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const phoneRegEx = /^(\+|00)(?:[0-9] ?){6,14}[0-9]$/;
@@ -39,35 +37,29 @@ let project = projectInput[0];
 
 // Variables for collecting values of user input
 let firstName, lastName, email, phone, address, postalCode, area, message;
-
-// Objects for colleting the variables defined before
 let data = {};
-let validationErrors = {};
+let validationErrors = {
+  firstName,
+  lastName,
+  email,
+  phone,
+  address,
+  postalCode,
+  area,
+  message,
+};
 
 /* --------- */
 /* FUNCTIONS */
 /* --------- */
 
-const validationErrorsInitializer = () => {
-  validationErrors = {
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    phone: undefined,
-    address: undefined,
-    postalCode: undefined,
-    area: undefined,
-    message: undefined,
-  };
-};
-
-const titleValidation = () => {
+function titleValidation() {
   title = titleInput.value;
-};
+}
 
 // Function that detects if there are any error messages present
 // This can be used for each individual validation function
-const detectErrorMessage = (containerName) => {
+function detectErrorMessage(containerName) {
   if (document.querySelector(`.${containerName} span`)) {
     document
       .querySelectorAll(`.${containerName} span`)
@@ -75,30 +67,30 @@ const detectErrorMessage = (containerName) => {
         spanElement.remove();
       });
   }
-};
+}
 
 // Function that allows display of the error message below
 // each input field
-const displayErrorMessage = (errorMessage, containerName, idSelector) => {
+function displayErrorMessage(errorMessage, containerName, idSelector) {
   const errorDisplay = document.createElement("span");
   errorDisplay.innerHTML = `${errorMessage}`;
   document.querySelector(`.${containerName} label`).after(errorDisplay);
   document.querySelector(`#${idSelector}`).style.borderBottomColor =
-    "var(--red)";
-};
+    "rgb(246, 78, 78)";
+}
 
 // Function that styles the bottom border when input is valid
-const styleConfirmation = (inputSelector) => {
-  inputSelector.style.borderBottom = "solid 1px var(--green)";
-};
+function styleConfirmation(inputSelector) {
+  inputSelector.style.borderBottom = "solid 1px green";
+}
 
-const removeSubmitMessage = () => {
+function removeSubmitMessage() {
   setTimeout(() => {
     document.querySelector(".submit-container span").remove();
   }, 5000);
-};
+}
 
-const firstNameValidation = () => {
+function firstNameValidation() {
   detectErrorMessage("first-name-container");
 
   firstName = firstNameInput.value;
@@ -130,9 +122,9 @@ const firstNameValidation = () => {
       console.log(validationErrors);
     }
   }
-};
+}
 
-const lastNameValidation = () => {
+function lastNameValidation() {
   detectErrorMessage("last-name-container");
 
   lastName = lastNameInput.value;
@@ -164,9 +156,9 @@ const lastNameValidation = () => {
       console.log(validationErrors);
     }
   }
-};
+}
 
-const emailValidation = () => {
+function emailValidation() {
   detectErrorMessage("email-container");
 
   email = emailInput.value;
@@ -178,7 +170,7 @@ const emailValidation = () => {
   } else {
     if (!emailRegEx.test(email)) {
       console.error("Invalid E-Mail");
-      validationErrors.email = "Invalid format (john@doe.com)";
+      validationErrors.email = "Invalid format (max@mustermann.ch)";
       detectErrorMessage();
       displayErrorMessage(validationErrors.email, "email-container", "email");
     } else {
@@ -189,9 +181,9 @@ const emailValidation = () => {
       console.log(validationErrors);
     }
   }
-};
+}
 
-const phoneValidation = () => {
+function phoneValidation() {
   detectErrorMessage("phone-container");
 
   phone = phoneInput.value;
@@ -215,9 +207,9 @@ const phoneValidation = () => {
       console.log(validationErrors);
     }
   }
-};
+}
 
-const addressValidation = () => {
+function addressValidation() {
   detectErrorMessage("address-container");
 
   address = addressInput.value;
@@ -237,9 +229,9 @@ const addressValidation = () => {
     styleConfirmation(addressInput);
     console.log(validationErrors);
   }
-};
+}
 
-const postalCodeValidation = () => {
+function postalCodeValidation() {
   detectErrorMessage("postal-code-container");
 
   postalCode = postalCodeInput.value;
@@ -276,9 +268,9 @@ const postalCodeValidation = () => {
       console.log(validationErrors);
     }
   }
-};
+}
 
-const areaValidation = () => {
+function areaValidation() {
   detectErrorMessage("area-container");
 
   area = areaInput.value;
@@ -294,13 +286,13 @@ const areaValidation = () => {
     styleConfirmation(areaInput);
     console.log(validationErrors);
   }
-};
+}
 
-const projectValidation = () => {
+function projectValidation() {
   project = projectInput.value;
-};
+}
 
-const messageValidation = () => {
+function messageValidation() {
   detectErrorMessage("message-container");
 
   message = messageInput.value;
@@ -334,9 +326,9 @@ const messageValidation = () => {
       console.log(validationErrors);
     }
   }
-};
+}
 
-const validateForm = (event) => {
+function validateForm(event) {
   event.preventDefault();
   detectErrorMessage("submit-container");
 
@@ -382,41 +374,42 @@ const validateForm = (event) => {
 
     console.log(data);
 
-    // When the input has been saved, the input fields need to
-    // be cleared and their style reset
+    // When the input has been saved to the backend, the input fields need to
+    // be cleared
     inputsOnSubmit.forEach((input) => {
       input.value = "";
       input.style.borderBottom = "1px solid black";
     });
 
-    // Initializing the dropdowns to their original state
+    // Resetting the dropdowns to their original state
     for (var i = 0; i < selectTags.length; i++) {
       selectTags[i].selectedIndex = 0;
     }
 
     // Resetting data to its original state
     data = {};
-    validationErrorsInitializer();
+
+    // Resetting validationErrors to its original state
+    validationErrors = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      postalCode,
+      area,
+      message,
+    };
   }
 
   // the object "data" has now been cleared in case of another input
   console.log(data);
-  // the object "validationErrors" has been initialized to its original state
-  console.log(validationErrors);
-};
+}
 
 /* --------------- */
 /* EVENT LISTENERS */
 /* --------------- */
 
-// Execute the function to initialize the object with validation errors
-validationErrorsInitializer();
-
-// Log the inital values of the variables in the objects "data" and "validationErrors"
-console.log(data);
-console.log(validationErrors);
-
-// Add event listeners to all of the individual input fields
 titleInput.addEventListener("focusout", titleValidation);
 firstNameInput.addEventListener("focusout", firstNameValidation);
 lastNameInput.addEventListener("focusout", lastNameValidation);
@@ -427,8 +420,6 @@ postalCodeInput.addEventListener("focusout", postalCodeValidation);
 projectInput.addEventListener("focusout", projectValidation);
 areaInput.addEventListener("focusout", areaValidation);
 messageInput.addEventListener("focusout", messageValidation);
-
-// Add event listener to the submit button
 formSubmit.addEventListener("click", validateForm);
 
 // document.querySelectorAll('input').forEach( element => {

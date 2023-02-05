@@ -19,9 +19,9 @@
 .hero-container .hero-title h1 {
   font-family: var(--title);
   font-size: 2rem;
-  color: var(--copper);
-  /* text-transform: lowercase; */
-  font-weight: 500;
+  color: var(--darkestgrey);
+  text-transform: lowercase;
+  font-weight: 600;
   /* letter-spacing: var(--space); */
   position: relative;
   z-index: 5;
@@ -29,7 +29,7 @@
 }
 
 h1::after {
-  background-color: var(--lightgrey);
+  background-color: var(--beige);
   content: "";
   position: absolute;
   width: calc(100% + 4px);

@@ -14,9 +14,9 @@ const lightboxBtns = document.querySelectorAll(".lightbox-btn");
 const lightboxBtnRight = document.querySelector("#right");
 const lightboxBtnLeft = document.querySelector("#left");
 
-const autoPlayBtn = document.querySelector(".play-pause");
-const slideshowBtn = document.querySelector(".slideshow");
+const slideshowBtn = document.querySelector(".slideshow-btn");
 let playing = true;
+// let slideInterval = setInterval(slideLeft, 3000);
 let slideInterval, activeImage;
 
 // let activeImage;
@@ -37,12 +37,6 @@ const playSlideshow = () => {
   slideInterval = setInterval(slideRight, 3000);
 };
 
-// Function that toggles between "play" and "pause" icons
-const togglePlayPause = () => {
-  autoPlayBtn.classList.toggle("fa-play");
-  autoPlayBtn.classList.toggle("fa-pause");
-};
-
 // Function that resets slideInterval
 const resetInterval = () => {
   clearInterval(slideInterval);
@@ -59,7 +53,6 @@ const openLightbox = () => {
 const closeLightbox = () => {
   lightboxContainer.classList.remove("active");
   playing = true;
-  togglePlayPause();
 };
 
 const setCurrentImage = (image) => {
@@ -102,7 +95,6 @@ lightboxContainer.addEventListener("click", () => {
 
 slideshowBtn.addEventListener("click", (e) => {
   e.stopPropagation();
-  togglePlayPause();
   if (playing) {
     pauseSlideshow();
   } else {
@@ -117,7 +109,6 @@ window.addEventListener("keydown", (e) => {
   // checks if the spacebar is pressed
   if (e.key === " ") {
     e.preventDefault();
-    togglePlayPause();
     if (playing) {
       pauseSlideshow();
     } else {

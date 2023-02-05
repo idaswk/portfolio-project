@@ -1,10 +1,10 @@
 /* Footer */
 
-.limit {
+/* .limit {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
+} */
 
 .main-footer {
   -webkit-clip-path: polygon(0 0, 50% 30px, 100% 0, 100% 100%, 0 100%);
@@ -20,7 +20,7 @@
   font-size: 0.8rem;
   color: var(--white);
   padding: 4rem 4rem 3rem 4rem;
-  flex: 1;
+  flex-grow: 1;
 }
 
 .legal-links li small {
@@ -79,8 +79,15 @@ small,
 
 .social-links img:hover,
 .social-links img:active {
-  border: solid 2px rgba(0, 0, 0, 0);
+  filter: invert(1);
+  transition: -webkit-filter 0.2s linear;
 }
+
+/* Another option fo the social link transformation on hover */
+/* .social-links img:hover,
+.social-links img:active {
+  border: solid 2px rgba(0, 0, 0, 0);
+} */
 
 @media screen and (max-width: 900px) {
   .main-footer {

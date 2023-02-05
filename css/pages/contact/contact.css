@@ -256,14 +256,14 @@ textarea:focus::placeholder {
 }
 
 form span {
-  color: rgb(246, 78, 78);
-  font-size: 0.7em;
+  color: var(--red);
+  font-size: 0.6em;
   font-weight: 600;
   text-transform: uppercase;
   text-align: left;
   width: 100%;
   margin-top: 5px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .submit-container > span {
@@ -297,8 +297,7 @@ form span {
 @media screen and (max-width: 700px) {
   .info--1,
   .info--2,
-  .info--3,
-  label[for="project"] {
+  .info--3 {
     text-align: center;
   }
 

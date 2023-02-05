@@ -72,6 +72,10 @@ li.contact {
   color: var(--black);
 }
 
+/* i.fa-chevron-down:hover {
+  transform: rotate(180deg);
+} */
+
 .desktop-navigation ul a:link,
 .desktop-navigation ul a:visited {
   font-family: var(--nav);
@@ -163,7 +167,7 @@ li.desktop-trigger {
   .logo {
     height: 100%;
     margin: 0 auto;
-    padding-right: 1.8rem;
+    padding-right: 1.9rem;
   }
 
   .logo img {
@@ -177,6 +181,7 @@ li.desktop-trigger {
     justify-content: space-between;
     height: 22px;
     width: 22px;
+    margin-left: 0.5rem;
   }
 
   .nav-toggle .bar {
@@ -232,6 +237,10 @@ li.desktop-trigger {
     display: none;
   }
 
+  .no-scroll {
+    overflow-y: hidden;
+  }
+
   .links.active {
     font-family: var(--nav);
     font-size: 1.5rem;
@@ -240,7 +249,7 @@ li.desktop-trigger {
     flex-direction: column;
     position: absolute;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     top: 100%;
     left: 0;
     right: 0;
@@ -248,23 +257,24 @@ li.desktop-trigger {
     background: var(--black);
     padding: 4rem 0 2rem 2rem;
     gap: 2.5rem;
+    overflow: scroll;
   }
 
   .portfolio-sub-content-hidden,
-  .contact-sub-content-hidden {
+  .about-sub-content-hidden {
     display: none;
   }
 
   .portfolio-button,
-  .contact-button {
+  .about-button {
     margin-left: 1rem;
     font-size: 1.3rem;
   }
 
   .portfolio-sub-content-visible,
-  .contact-sub-content-visible {
+  .about-sub-content-visible {
     display: flex;
-    width: 100%;
+    width: auto;
     flex-direction: column;
     font-size: 1.2rem;
     margin-top: 1rem;

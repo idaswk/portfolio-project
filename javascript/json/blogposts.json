@@ -1,0 +1,29 @@
+[
+  {
+    "postId": 1,
+    "id": 1,
+    "imageSrc": "images/blog/snake-skateboard.jpeg",
+    "imageAlt": "Image of a skateboard deck with a snake painted on it",
+    "title": "Skateboard Art",
+    "date": "22. March 2022",
+    "body": "In March 2022 I was asked to participate in a skateboard art competition for 3SIXTY's 10 year anniversary. All skateboard decks were auctioned off at the end of the competition, where all profits made were donated to Skateistan."
+  },
+  {
+    "postId": 2,
+    "id": 2,
+    "imageSrc": "images/blog/dog-painting.jpeg",
+    "imageAlt": "Image of a painting with two greyhounds wearing sweaters",
+    "title": "Secondhand Art",
+    "date": "22. January 2022",
+    "body": "In January 2022 I bought a secondhand painting of two greyhounds and painted sweaters on them as a birthday gift for a dog and sweater (especially dogs in sweaters) obsessed friend."
+  },
+  {
+    "postId": 3,
+    "id": 3,
+    "imageSrc": "images/blog/first-tattoo.jpeg",
+    "imageAlt": "Image of Ida Watson tattooing with a coil tattoo machine",
+    "title": "Skin Art",
+    "date": "22. May 2020",
+    "body": "In May 2020 I tried tattooing for the first time with the guidance of a tattooist friend. This is where my journey into the world of tattooing started.  "
+  }
+]
