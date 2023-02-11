@@ -6,7 +6,15 @@
     "imageAlt": "Image of a skateboard deck with a snake painted on it",
     "title": "Skateboard Art",
     "date": "22. March 2022",
-    "body": "In March 2022 I was asked to participate in a skateboard art competition for 3SIXTY's 10 year anniversary. All skateboard decks were auctioned off at the end of the competition, where all profits made were donated to Skateistan."
+    "body": "In March 2022 I was asked to participate in a skateboard art competition for 3SIXTY's 10 year anniversary. All skateboard decks were auctioned off at the end of the competition, where all profits made were donated to Skateistan.",
+    "images": [
+      "images/blog/skateboard/skate-1.jpeg",
+      "images/blog/skateboard/skate-2.jpeg",
+      "images/blog/skateboard/skate-3.jpeg",
+      "images/blog/skateboard/skate-4.jpeg",
+      "images/blog/skateboard/skate-5.jpeg",
+      "images/blog/skateboard/skate-6.jpeg"
+    ]
   },
   {
     "postId": 2,

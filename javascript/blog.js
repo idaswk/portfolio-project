@@ -1,4 +1,4 @@
-const path = "javascript/json/blogposts.json";
+const path = "json/blogposts.json";
 
 getData();
 // getPostImages();
@@ -11,6 +11,7 @@ async function getData() {
   createBlog(data);
 }
 
+// Function to create individual blog posts
 function createBlog(posts) {
   posts.forEach((post) => {
     const template = `
@@ -18,10 +19,9 @@ function createBlog(posts) {
         <img
           src="${post.imageSrc}"
           alt="Image of ${post.imageAlt}"
-          id="${post.postId}"
         />
       </div>
-      <article class="blog-post">
+      <div class="blog-post">
         <section>
           <span class="date">${post.date}</span>
           <h2 class="blog-post-title">${post.title}</h2>
@@ -29,20 +29,23 @@ function createBlog(posts) {
             ${post.body}
           </p>
         </section>
-      </article>
+      </div>
     `;
 
-    const mainContainer = document.createElement("section");
+    const mainContainer = document.createElement("article");
     mainContainer.classList.add("post");
+    mainContainer.setAttribute("id", `${post.postId}`);
     mainContainer.innerHTML = template;
 
     document.querySelector(".blog-container").appendChild(mainContainer);
   });
 }
 
+// Function to get post images
 // function getPostImages() {
-//   const container = document.querySelector(".blog-container");
-//   container.addEventListener("click", (image) => {
-//     const images = image.target.id;
+//   container.addEventListener("click", (event) => {
+//     const container = document.querySelector(".blog-container");
+//     let text = event.currentTarget.id;
+//     console.log(text);
 //   });
 // }

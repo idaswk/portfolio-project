@@ -190,10 +190,18 @@ label[for="title"] {
 
 input:focus + label,
 input:valid + label {
-  color: var(--darkestgrey);
-  font-size: 12px;
-  top: -25px;
-  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--body);
+  color: var(--mediumgrey);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  cursor: text;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+  font-size: 1rem;
 }
 
 input:focus {
