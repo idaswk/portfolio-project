@@ -4,15 +4,6 @@ body {
   background-color: var(--white);
 }
 
-/* .info,
-label[for="project"],
-[placeholder] {
-  font-family: var(--body);
-  color: var(--darkestgrey);
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-} */
-
 .contact-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -71,13 +62,6 @@ label[for="project"],
   margin-top: 3rem;
 }
 
-/* .input-personal label,
-.input-location label,
-label[for="message"] {
-  font-size: 12px;
-  font-family: var(--body);
-} */
-
 .info--3 > span {
   font-weight: 600;
 }
@@ -125,7 +109,7 @@ select {
 }
 
 select#title,
-select#project {
+select#service {
   padding: 0.5rem 0 0.5rem 0;
   border: none;
   border-bottom: 1px var(--darkestgrey) solid;
@@ -190,25 +174,18 @@ label[for="title"] {
 
 input:focus + label,
 input:valid + label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: var(--body);
-  color: var(--mediumgrey);
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  cursor: text;
-  transition: 0.3s ease-in-out;
-  width: 100%;
-  font-size: 1rem;
+  color: var(--darkestgrey);
+  font-size: 12px;
+  top: -20px;
+  pointer-events: none;
 }
 
 input:focus {
   border-bottom: 2px solid var(--darkestgrey);
 }
 
-label[for="project"] {
+label[for="service"],
+label[for="details"] {
   margin: 1.5rem 0 0.5rem 0;
   font-family: var(--body);
   letter-spacing: 0.5px;
@@ -220,6 +197,32 @@ label[for="message"] {
   display: none;
 }
 
+input[type="file"] {
+  border: 1px black solid;
+  padding: 10px;
+  margin-bottom: 8px;
+  font-family: var(--body);
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+input[type="file"]::file-selector-button {
+  border: 1px solid var(--darkestgrey);
+  transition: 0.5s;
+  background-color: var(--white);
+  font-family: var(--title);
+  text-transform: lowercase;
+  padding: 10px 15px;
+  margin-right: 1rem;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: var(--darkestgrey);
+  border: 1px solid var(--darkestgrey);
+  color: var(--white);
+  cursor: pointer;
+}
+
 textarea#message {
   padding: 1rem;
   border: 1px var(--darkestgrey) solid;
@@ -228,12 +231,68 @@ textarea#message {
   resize: none;
 }
 
+textarea::-webkit-input-placeholder {
+  font-family: var(--body);
+  letter-spacing: 0.5px;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--darkgrey);
+}
+
+textarea::-moz-placeholder {
+  font-family: var(--body);
+  letter-spacing: 0.5px;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--darkgrey);
+}
+
+textarea:-ms-input-placeholder {
+  font-family: var(--body);
+  letter-spacing: 0.5px;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--darkgrey);
+}
+
+textarea::-ms-input-placeholder {
+  font-family: var(--body);
+  letter-spacing: 0.5px;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--darkgrey);
+}
+
 textarea::placeholder {
   font-family: var(--body);
   letter-spacing: 0.5px;
   font-style: italic;
   font-size: 1rem;
   color: var(--darkgrey);
+}
+
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+textarea:focus::-moz-placeholder {
+  color: transparent;
+  -moz-transition: 0.2s;
+  transition: 0.2s;
+}
+
+textarea:focus:-ms-input-placeholder {
+  color: transparent;
+  -ms-transition: 0.2s;
+  transition: 0.2s;
+}
+
+textarea:focus::-ms-input-placeholder {
+  color: transparent;
+  -ms-transition: 0.2s;
+  transition: 0.2s;
 }
 
 textarea:focus::placeholder {
@@ -281,6 +340,69 @@ form span {
   margin-top: 1rem;
 }
 
+.lightbox-container {
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.64);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lightbox-container.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 100;
+  cursor: zoom-out;
+}
+
+.lightbox-text-container {
+  background-color: var(--white);
+  border-radius: 15px;
+  height: 65vh;
+  width: 50vw;
+  max-width: 850px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.lightbox-text {
+  font-family: var(--body);
+  color: var(--darkestgrey);
+  padding: 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.lightbox-text h1 {
+  font-family: var(--title);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.lightbox-btn.close {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  font-size: 2.5rem;
+  color: var(--darkestgrey);
+}
+
+.lightbox-btn.close:hover {
+  color: var(--mediumgrey);
+  transition: 0.2s;
+}
+
 @media screen and (max-width: 1000px) {
   .contact-container {
     grid-template-columns: repeat(1, 1fr);
@@ -299,6 +421,17 @@ form span {
   .info--2,
   .info--3 {
     margin-top: 2rem;
+  }
+
+  .lightbox-text-container {
+    min-height: 65vh;
+    width: 80vw;
+  }
+
+  .lightbox-btn.close {
+    top: 1%;
+    right: 5%;
+    color: var(--darkestgrey);
   }
 }
 
@@ -320,5 +453,18 @@ form span {
 
   .input-personal {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .lightbox-text-container {
+    min-height: 80vh;
+  }
+
+  .lightbox-text {
+    font-family: var(--body);
+    color: var(--darkestgrey);
+    padding: 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 }

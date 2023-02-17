@@ -1,8 +1,17 @@
+/* --------- */
+/* VARIABLES */
+/* --------- */
+
 const path = "json/blogposts.json";
 
-getData();
-// getPostImages();
+/* --------- */
+/* FUNCTIONS */
+/* --------- */
 
+// Call the getData function
+getData();
+
+// Create the function getData which is a GET request
 async function getData() {
   const response = await fetch(path);
   const data = await response.json();
@@ -40,12 +49,3 @@ function createBlog(posts) {
     document.querySelector(".blog-container").appendChild(mainContainer);
   });
 }
-
-// Function to get post images
-// function getPostImages() {
-//   container.addEventListener("click", (event) => {
-//     const container = document.querySelector(".blog-container");
-//     let text = event.currentTarget.id;
-//     console.log(text);
-//   });
-// }

@@ -79,6 +79,7 @@ small,
 
 .social-links img:hover,
 .social-links img:active {
+  -webkit-filter: invert(1);
   filter: invert(1);
   transition: -webkit-filter 0.2s linear;
 }

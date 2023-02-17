@@ -2,6 +2,13 @@
 /* VARIABLES */
 /* --------- */
 
+// Query selector of the lightboxContainer
+const lightboxContainer = document.querySelector(".lightbox-container");
+// Query selector of the "close"-button
+const lightboxClose = document.querySelector(".close");
+// Query selector of the "home"-button
+const lightboxHome = document.querySelector(".home");
+
 // Query Selectors of each input field
 const titleInput = document.querySelector("#title");
 const firstNameInput = document.querySelector("#first-name");
@@ -11,8 +18,8 @@ const phoneInput = document.querySelector("#phone");
 const addressInput = document.querySelector("#address");
 const postalCodeInput = document.querySelector("#postal-code");
 const areaInput = document.querySelector("#area");
-const projectInput = document.querySelector("#project");
-const textareaInput = document.querySelector("textarea");
+const serviceInput = document.querySelector("#service");
+const fileInput = document.querySelector("#details");
 const messageInput = document.querySelector("#message");
 const formSubmit = document.querySelector("#submit");
 
@@ -28,6 +35,7 @@ const zipRegExCanada = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
 const zipRegExUK =
   /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/;
 
+// Query Selectors of select-tags
 const selectTags = document.getElementsByTagName("select");
 const inputsOnSubmit = document.querySelectorAll(
   "input:not(#submit), #message"
@@ -35,10 +43,10 @@ const inputsOnSubmit = document.querySelectorAll(
 
 // Setting the standard input value of the dropdown menus in case of no user selection
 let title = titleInput[0];
-let project = projectInput[0];
+let service = serviceInput[0];
 
 // Variables for collecting values of user input
-let firstName, lastName, email, phone, address, postalCode, area, message;
+let firstName, lastName, email, phone, address, postalCode, area, file, message;
 
 // Objects for colleting the variables defined before
 let data = {};
@@ -48,6 +56,7 @@ let validationErrors = {};
 /* FUNCTIONS */
 /* --------- */
 
+// Function that initializes the validationErrors
 const validationErrorsInitializer = () => {
   validationErrors = {
     firstName: undefined,
@@ -61,14 +70,21 @@ const validationErrorsInitializer = () => {
   };
 };
 
-const titleValidation = () => {
-  title = titleInput.value;
+// Function that adds the class "active" to lightboxContainer
+const openLightbox = () => {
+  lightboxContainer.classList.add("active");
+};
+
+// Function that removes the class "active" from lightboxContainer
+const closeLightbox = () => {
+  lightboxContainer.classList.remove("active");
 };
 
 // Function that detects if there are any error messages present
 // This can be used for each individual validation function
 const detectErrorMessage = (containerName) => {
   if (document.querySelector(`.${containerName} span`)) {
+    // Deleting error message in case one is already present
     document
       .querySelectorAll(`.${containerName} span`)
       .forEach((spanElement) => {
@@ -80,58 +96,89 @@ const detectErrorMessage = (containerName) => {
 // Function that allows display of the error message below
 // each input field
 const displayErrorMessage = (errorMessage, containerName, idSelector) => {
+  // Creating the error message
   const errorDisplay = document.createElement("span");
+  // Setting the inner text of the error message
   errorDisplay.innerHTML = `${errorMessage}`;
+  // Defining where the message will appear
   document.querySelector(`.${containerName} label`).after(errorDisplay);
+  // Setting the style of the error message
   document.querySelector(`#${idSelector}`).style.borderBottomColor =
     "var(--red)";
 };
 
 // Function that styles the bottom border when input is valid
 const styleConfirmation = (inputSelector) => {
+  // Setting the style of the input field
   inputSelector.style.borderBottom = "solid 1px var(--green)";
 };
 
+// Function that removes message below submit
 const removeSubmitMessage = () => {
   setTimeout(() => {
+    // Removing the span element below the submit button
+    // after 5s (5000ms)
     document.querySelector(".submit-container span").remove();
   }, 5000);
 };
 
+// Function that takes the value of the chosen dropdown
+// selection of "title"
+const titleSelection = () => {
+  title = titleInput.value;
+};
+
+// Function that validates the firstName input
 const firstNameValidation = () => {
+  // Checking to see if an error message is already
+  // present in given container
   detectErrorMessage("first-name-container");
 
   firstName = firstNameInput.value;
+  // If no first name is provided
   if (!firstName) {
     console.error("No first name provided");
+    // Defining error message that will appear
     validationErrors.firstName = "Please provide a first name";
+    // Deleting error message in case one is already present
     detectErrorMessage();
+    // Displaying new error message
     displayErrorMessage(
       validationErrors.firstName,
       "first-name-container",
       "first-name"
     );
   } else {
+    // If first name syntax does not match RegEx search pattern
     if (!nameRegEx.test(firstName)) {
       console.error("Invalid first name");
+      // Defining error message that will appear
       validationErrors.firstName =
         "Invalid format - please avoid special characters";
+      // Deleting error message in case one is already present
       detectErrorMessage();
+      // Displaying new error message
       displayErrorMessage(
         validationErrors.firstName,
         "first-name-container",
         "first-name"
       );
     } else {
+      // If first name syntax is matched to RegEx search pattern
       console.info(`First name (${firstName}) is valid`);
+      // Deleting firstName in validationErrors object
       delete validationErrors.firstName;
+      // Deleting error message in case one is present
       detectErrorMessage();
+      // Changing style of input field
       styleConfirmation(firstNameInput);
       console.log(validationErrors);
     }
   }
 };
 
+// Function that validates the lastName input
+// (See "firstNameValidation" for more function clarification)
 const lastNameValidation = () => {
   detectErrorMessage("last-name-container");
 
@@ -166,6 +213,8 @@ const lastNameValidation = () => {
   }
 };
 
+// Function that validates the email input
+// (See "firstNameValidation" for more function clarification)
 const emailValidation = () => {
   detectErrorMessage("email-container");
 
@@ -191,6 +240,8 @@ const emailValidation = () => {
   }
 };
 
+// Function that validates the phone input
+// (See "firstNameValidation" for more function clarification)
 const phoneValidation = () => {
   detectErrorMessage("phone-container");
 
@@ -217,6 +268,8 @@ const phoneValidation = () => {
   }
 };
 
+// Function that validates the address input
+// (See "firstNameValidation" for more function clarification)
 const addressValidation = () => {
   detectErrorMessage("address-container");
 
@@ -239,6 +292,8 @@ const addressValidation = () => {
   }
 };
 
+// Function that validates the postalCode input
+// (See "firstNameValidation" for more function clarification)
 const postalCodeValidation = () => {
   detectErrorMessage("postal-code-container");
 
@@ -278,6 +333,8 @@ const postalCodeValidation = () => {
   }
 };
 
+// Function that validates the area input
+// (See "firstNameValidation" for more function clarification)
 const areaValidation = () => {
   detectErrorMessage("area-container");
 
@@ -296,10 +353,18 @@ const areaValidation = () => {
   }
 };
 
-const projectValidation = () => {
-  project = projectInput.value;
+// Function that takes the value of the chosen dropdown
+// selection of "project"
+const serviceSelection = () => {
+  service = serviceInput.value;
 };
 
+const fileSelection = () => {
+  file = fileInput.files[0];
+};
+
+// Function that validates the message input
+// (See "firstNameValidation" for more function clarification)
 const messageValidation = () => {
   detectErrorMessage("message-container");
 
@@ -336,39 +401,35 @@ const messageValidation = () => {
   }
 };
 
+// Function that validates the entire form
 const validateForm = (event) => {
   event.preventDefault();
   detectErrorMessage("submit-container");
 
-  // data and validationErrors are both objects, because we have defined them as such (data = {})
+  // data and validationErrors are both objects, because we
+  // have defined them as such (data = {}, validationErrors = {})
 
   // Check to see if there are still any errors
   if (Object.keys(validationErrors).length > 0) {
     // If there are still validation errors, log an error to the console
     console.error("Form is not complete");
-    // Create
+    // Create error message
     const submitError = document.createElement("span");
     submitError.innerHTML = "Please complete the form";
     formSubmit.after(submitError);
 
+    // Remove the error message
     removeSubmitMessage();
   } else {
     // If there are no validation errors,
-    // send form to backend (we use console.log because we have not worked with backend yet)
+    // send form to back-end (we use console.log because we have not
+    // worked with back-end yet)
     console.info("Sending form data to backend");
+    openLightbox();
 
-    // Creating a confirmation message below the submit button if all input in input fields are valid
-    const submitValidation = document.createElement("span");
-    submitValidation.innerHTML = "Thank you!";
-    formSubmit.after(submitValidation);
-    document.querySelector(".submit-container span").style.color =
-      "var(--black)";
-
-    // Remove the span below the submit button
-    removeSubmitMessage();
-
-    // (Theoretically) The input data of the user should be sent to the
-    // data object we have defined, so we can send this to the backend.
+    // (Theoretically) The input data of the user should be sent
+    // to the data object we have defined, so we can (theoretically)
+    // send this to the back-end.
     data.title = title;
     data.firstName = firstName;
     data.lastName = lastName;
@@ -377,7 +438,8 @@ const validateForm = (event) => {
     data.address = address;
     data.postalCode = postalCode;
     data.area = area;
-    data.project = project;
+    data.service = service;
+    data.file = file;
     data.message = message;
 
     console.log(data);
@@ -389,12 +451,16 @@ const validateForm = (event) => {
       input.style.borderBottom = "1px solid black";
     });
 
+    inputsOnSubmit.forEach((input) => {
+      input.style.borderBottom = "1px solid black";
+    });
+
     // Initializing the dropdowns to their original state
     for (var i = 0; i < selectTags.length; i++) {
       selectTags[i].selectedIndex = 0;
     }
 
-    // Resetting data to its original state
+    // Resetting the objects to their original state
     data = {};
     validationErrorsInitializer();
   }
@@ -416,25 +482,33 @@ validationErrorsInitializer();
 console.log(data);
 console.log(validationErrors);
 
-// Add event listeners to all of the individual input fields
-titleInput.addEventListener("focusout", titleValidation);
+// Add event listeners (focusout) to all of the individual input fields
+titleInput.addEventListener("focusout", titleSelection);
 firstNameInput.addEventListener("focusout", firstNameValidation);
 lastNameInput.addEventListener("focusout", lastNameValidation);
 emailInput.addEventListener("focusout", emailValidation);
 phoneInput.addEventListener("focusout", phoneValidation);
 addressInput.addEventListener("focusout", addressValidation);
 postalCodeInput.addEventListener("focusout", postalCodeValidation);
-projectInput.addEventListener("focusout", projectValidation);
 areaInput.addEventListener("focusout", areaValidation);
+serviceInput.addEventListener("focusout", serviceSelection);
+fileInput.addEventListener("change", fileSelection);
 messageInput.addEventListener("focusout", messageValidation);
 
-// Add event listener to the submit button
+// Add event listener (click) to the submit button
 formSubmit.addEventListener("click", validateForm);
 
-// document.querySelectorAll('input').forEach( element => {
-//   element.addEventListener('focusout', func => {
+// Add event listener (click) to the close button and the entire container
+lightboxClose.addEventListener("click", closeLightbox);
+lightboxContainer.addEventListener("click", closeLightbox);
 
-//   })
-// })
-
-// }
+window.addEventListener("keydown", (e) => {
+  // checks to see if the lightboxContainer is active, if not the eventListener
+  // will return/exit
+  if (!lightboxContainer.classList.contains("active")) return;
+  // checks if the escape key is pressed
+  if (e.key === "Escape") {
+    // if the escape key is pressed, the lightbox will close
+    closeLightbox();
+  }
+});
