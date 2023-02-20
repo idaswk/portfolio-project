@@ -23,6 +23,9 @@ const fileInput = document.querySelector("#details");
 const messageInput = document.querySelector("#message");
 const formSubmit = document.querySelector("#submit");
 
+// Query Selector of file input container as a dropbox
+const dropBox = document.querySelector(".file-container");
+
 // RegExes
 // const nameRegEx = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{0,}$/;
 const nameRegEx =
@@ -360,8 +363,14 @@ const serviceSelection = () => {
 };
 
 const fileSelection = () => {
-  file = fileInput.files[0];
+  file = fileInput.files.length;
 };
+
+// function fileSelection() {
+//   for (var i = 0; i < fileInput.files.length; i++) {
+//     file = fileInput.files[i];
+//   }
+// }
 
 // Function that validates the message input
 // (See "firstNameValidation" for more function clarification)
@@ -494,6 +503,27 @@ areaInput.addEventListener("focusout", areaValidation);
 serviceInput.addEventListener("focusout", serviceSelection);
 fileInput.addEventListener("change", fileSelection);
 messageInput.addEventListener("focusout", messageValidation);
+
+// Add event listener (dragover) to the dropbox
+dropBox.addEventListener("dragover", (event) => {
+  // prevent file from being opened in browser
+  event.preventDefault();
+  // Add class list "active"
+  dropBox.classList.add("active");
+});
+
+// Add event listener (dragleave) to the dropbox
+dropBox.addEventListener("dragleave", () => {
+  // Remove class "active"
+  dropBox.classList.remove("active");
+});
+
+// Add event listener (drop) to the dropbox
+dropBox.addEventListener("drop", () => {
+  // Remove class list active
+  dropBox.classList.remove("active");
+  // process the drop
+});
 
 // Add event listener (click) to the submit button
 formSubmit.addEventListener("click", validateForm);

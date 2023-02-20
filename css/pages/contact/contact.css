@@ -197,8 +197,17 @@ label[for="message"] {
   display: none;
 }
 
+.file-container.active #details {
+  background-color: var(--black);
+  color: var(--white);
+  box-shadow: rgba(47, 47, 47, 0.2) 0px 7px 29px 0px;
+  transition: 0.2s;
+}
+
 input[type="file"] {
-  border: 1px black solid;
+  border: 1px var(--black) solid;
+  color: var(--darkestgrey);
+  border-radius: 2px;
   padding: 10px;
   margin-bottom: 8px;
   font-family: var(--body);
@@ -207,7 +216,8 @@ input[type="file"] {
 }
 
 input[type="file"]::file-selector-button {
-  border: 1px solid var(--darkestgrey);
+  border: 1px solid var(--black);
+  border-radius: 2px;
   transition: 0.5s;
   background-color: var(--white);
   font-family: var(--title);
@@ -217,8 +227,8 @@ input[type="file"]::file-selector-button {
 }
 
 input[type="file"]::file-selector-button:hover {
-  background-color: var(--darkestgrey);
-  border: 1px solid var(--darkestgrey);
+  background-color: var(--black);
+  border: 1px solid var(--black);
   color: var(--white);
   cursor: pointer;
 }
@@ -226,6 +236,7 @@ input[type="file"]::file-selector-button:hover {
 textarea#message {
   padding: 1rem;
   border: 1px var(--darkestgrey) solid;
+  border-radius: 2px;
   background-color: var(--white);
   margin-bottom: 2rem;
   resize: none;
